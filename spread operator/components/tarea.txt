@@ -1,0 +1,12 @@
+//Tarea
+
+-Resolver el error con el import de persona, si es que hay error --> 2 puntos
+-Hacer que el setNum que agregue mumeros conecutivos --> 3 puntos
+- Consigna: --> 5 puntos
+
+Tienen un arreglo de objetos productos, cada uno con nombre y precio. Usando map y el operador spread, genera un nuevo arreglo llamado productosConDescuento donde a cada producto se le agregue una propiedad descuento: true.
+
+const productos = [
+  { nombre: "Camiseta", precio: 20 },
+  { nombre: "Pantalón", precio: 30 },
+];
