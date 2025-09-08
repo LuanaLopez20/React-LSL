@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Rubik Gemstones', sans-serif;
+}
+
+body, p, ul, li, a {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color:  #6a4f33;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  background-color:#f1e5d9;
+  padding: 10px;
+  text-align: center;
+  width: 300vh;
+  align-items: center;
+  justify-content: center;
+   height: 25vh;
+}
+
+.navbar h1 {
+  font-size: 2em;
+  color: #5c4a3d;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar ul li {
+  display: inline;
+  margin: 0 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #5c4a3d;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  padding: 200px;
+  position: relative;
+  text-align: center;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero img {
+  width: 50%;
+  opacity: 0.9;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  padding: 50px;
+  background-color: #f1e5d9;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 300vh;
+}
+
+.text-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-img img {
+  width: 250px;
+  height: auto;
+  margin-right: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  text-align: left;
+  max-width: 500px;
+  align-items: center;
+  justify-content: center;
+}
+
+.text h3 {
+  color: #6a4f33;
+  font-size: 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+.text p {
+  font-size: 0,2;
+  color: #5c4a3d;
+  align-items: center;
+  justify-content: center;
+}
+
+.text ul {
+  font-size: 0.2;
+  color: #5c4a3d;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  background-color: #6a4f33;
+  color: white;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  align-items: center;
+  justify-content: center;
+}
+
