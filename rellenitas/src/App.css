@@ -62,7 +62,7 @@ body {
 
 .navbar a {
   text-decoration: none;
-  color: #5c4a3d;
+  color: #6a4f33;
   align-items: center;
   justify-content: center;
 }
@@ -133,14 +133,14 @@ body {
 
 .text p {
   font-size: 0,2;
-  color: #5c4a3d;
+  color: #6a4f33;
   align-items: center;
   justify-content: center;
 }
 
 .text ul {
   font-size: 0.2;
-  color: #5c4a3d;
+  color: #6a4f33;
   align-items: center;
   justify-content: center;
 }
@@ -166,4 +166,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
