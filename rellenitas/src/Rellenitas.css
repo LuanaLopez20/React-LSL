@@ -1,16 +1,16 @@
 .galletitas-container {
   text-align: center;
   padding: 120px 40px; /* menos padding para que no quede tan angosto */
-  background: linear-gradient(135deg, #f7b26a, #fdd49a);
+  background: linear-gradient(135deg, #6a4f33);
   min-height: 100vh;
-  color: #333;
+  color: #fffbfb;
   font-family: Arial, sans-serif;
 }
 
 .titulo {
   font-size: 3.2rem;
   margin-bottom: 50px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 5px rgb(255, 255, 255);
   font-weight: bold;
 }
 
