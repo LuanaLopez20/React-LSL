@@ -1,21 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap");
 
 html {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3 {
-  font-family: 'Rubik Gemstones', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Rubik Gemstones", sans-serif;
 }
 
-body, p, ul, li, a {
+body,
+p,
+ul,
+li,
+a {
   font-family: sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color:  #6a4f33;
+  background-color: #6a4f33;
   height: 100%;
   align-items: center;
   justify-content: center;
@@ -30,13 +36,13 @@ body {
 }
 
 .navbar {
-  background-color:#f1e5d9;
+  background-color: #f1e5d9;
   padding: 10px;
   text-align: center;
   width: 250vh;
   align-items: center;
   justify-content: center;
-   height: 25vh;
+  height: 25vh;
 }
 
 .navbar h1 {
@@ -68,7 +74,6 @@ body {
 }
 
 .hero {
-
   position: relative;
   text-align: center;
   color: white;
@@ -132,7 +137,7 @@ body {
 }
 
 .text p {
-  font-size: 0,2;
+  font-size: 0, 2;
   color: #6a4f33;
   align-items: center;
   justify-content: center;

@@ -1,0 +1,87 @@
+.descripciones-container {
+  text-align: center;
+  padding: 30px 375px;
+  background: linear-gradient(135deg, #ffe0b2, #fff3e0);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+/* 🔹 Cambiamos de columna a filas */
+.descripciones-grid {
+  display: flex;
+  flex-direction: column; /* apilamos las filas */
+  gap: 30px; /*espacio entre los cuadrado*/
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.descripcion-card {
+  display: flex; /* imagen izquierda + texto derecha */
+  align-items: center;
+  background: #fff;
+  border: 0.5px solid #ccc; /* borde más fino */
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.descripcion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 Imagen ocupa el lado izquierdo */
+.descripcion-card img {
+  width: 220px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px; /* espacio con el texto */
+  flex-shrink: 0; /* no se achica la imagen */
+}
+
+/* 🔹 Contenedor del texto */
+.descripcion-texto {
+  flex: 1; /* ocupa todo el resto del espacio */
+  text-align: left;
+}
+
+.descripcion-texto h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.descripcion-texto p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+  white-space: pre-line; /* respeta saltos de línea */
+}
+
+/* 🔹 Responsive: en pantallas chicas vuelve a columna */
+@media (max-width: 768px) {
+  .descripcion-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .descripcion-card img {
+    margin: 0 0 15px 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .descripcion-texto {
+    text-align: center;
+  }
+}
