@@ -1,0 +1,30 @@
+.cookies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* espacio entre las cookies */
+  justify-content: center; /* centra la fila */
+  margin-top: 20px;
+}
+
+.cookie-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 150px; /* tamaño fijo para todas las cookies */
+}
+
+.cookie-card img {
+  width: 100%; /* que la imagen ocupe todo el ancho de la tarjeta */
+  border-radius: 10px;
+}
+
+.ver-carrito-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #f7b26a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}

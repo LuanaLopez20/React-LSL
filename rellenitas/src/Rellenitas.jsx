@@ -1,5 +1,6 @@
 import React from "react";
-import "./RellenitasK.css"; // para estilos propios de esta página
+import "./Rellenitas.css"; // para estilos propios de esta página
+import { Link } from "react-router-dom";
 
 export default function Rellenitas() {
   return (

@@ -1,0 +1,43 @@
+.cart-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* para que baje a otra fila si no cabe */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cart-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.cart-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.cart-buttons button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #f7b26a;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.total {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+}

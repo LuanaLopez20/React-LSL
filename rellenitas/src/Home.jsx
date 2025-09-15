@@ -73,7 +73,6 @@ function Home({ cart, setCart }) {
 
       {/* Footer */}
       <footer className="footer">
-        <p>📍 Ubicación</p>
         <div className="socials">
           <a href="https://www.instagram.com/rellenitassok/?igsh=MWdjZmdyY2xuaXdyNA%3D%3D">
             Instagram
