@@ -1,7 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom"; // 👈 para recibir el estado
 import "./App.css";
 
 function Home({ cart, setCart }) {
+  const location = useLocation();
+  const usuario = location.state?.usuario; // 👈 nombre del usuario si viene desde Registrate/Login
+
   const cookies = [
     { id: 1, name: "COOKIE DE CHOCOLATE", price: 150, img: "/cookie1.png" },
     { id: 2, name: "COOKIE OREO", price: 170, img: "/cookie2.png" },
@@ -14,6 +18,20 @@ function Home({ cart, setCart }) {
 
   return (
     <div className="App">
+      {/* Mensaje de bienvenida */}
+      {usuario && (
+        <div
+          style={{
+            textAlign: "center",
+            margin: "1rem 0",
+            fontSize: "1.2rem",
+            color: "#ff6f61",
+          }}
+        >
+          ¡Bienvenido, {usuario}! 🍪
+        </div>
+      )}
+
       {/* Hero */}
       <header className="hero" id="home">
         <img src={"/cookie1.png"} alt="cookie" />

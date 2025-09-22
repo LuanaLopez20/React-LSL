@@ -61,18 +61,38 @@
   padding: 14px 24px;
   font-size: 1.4rem;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   background: #ff6600;
-  border: 3px solid #fff;
+  border: 3px solid #000000;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
   text-transform: uppercase;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 3px rgb(255, 255, 255);
 }
 
 .ver-descripciones a:hover {
   background: #ff3300;
   transform: scale(1.1);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+/* Botón dentro de cada card de galletita */
+.galletita button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff; /* texto blanco */
+  background: #000; /* fondo negro */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.galletita button:hover {
+  background: #333; /* gris oscuro al pasar el mouse */
+  transform: scale(1.05);
 }

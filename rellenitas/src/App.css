@@ -171,3 +171,100 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* Contenedor del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Texto del dropdown */
+.dropdown span {
+  color: #6a4f33;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+/* Contenido del dropdown */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f1e5d9;
+  min-width: 160px; /* mantiene el tamaño original */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+/* Mostrar dropdown al hover */
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Items del dropdown */
+.dropdown-content li {
+  list-style: none;
+}
+
+/* Enlaces y botones */
+.dropdown-content li a,
+.dropdown-content li button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #6a4f33;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover de los items */
+.dropdown-content li a:hover,
+.dropdown-content li button:hover {
+  background-color: #ffe6c9;
+}
+/* Navbar general */
+.navbar {
+  background-color: #f1e5d9;
+  padding: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* título arriba, links abajo */
+  align-items: center;
+}
+
+/* Fila inferior: links + carrito/usuario centrados */
+.navbar-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centra toda la fila */
+  gap: 2rem; /* espacio entre links y dropdown */
+  margin-top: 10px; /* separación del título */
+}
+
+/* Lista de links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor del carrito y dropdown de usuario */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

@@ -15,7 +15,7 @@
 /* Botón */
 .btn-volver {
   background: linear-gradient(135deg, #ff9800, #f57c00);
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 12px 20px;
   margin-top: 15px;
@@ -63,7 +63,7 @@
 
 /* 🔹 Lista de sabores */
 .lista-sabores {
-  list-style: "🍪 ";
+  list-style: " ";
   padding-left: 10px;
   margin-bottom: 15px;
 }

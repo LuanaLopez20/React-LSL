@@ -8,15 +8,19 @@ import Pedido from "./Pedido";
 import Carrito from "./Carrito";
 import CarritoIcon from "./CarritoIcon";
 import DescripcionK from "./descripcionesK";
+import Registrate from "./Registrate";
+import Login from "./Login";
+import RecuperarCuenta from "./RecuperarCuenta";
+import { useAuth } from "./AuthContext";
 
-// Nuevo componente de Ubicación
+// Componente de Ubicación
 function Contacto() {
   return (
     <div style={{ padding: "40px", textAlign: "center" }}>
       <h2>Ubicación</h2>
       <p>Aquí puedes poner tu ubicación y una foto del lugar.</p>
       <img
-        src="/ubicacion.jpg" // coloca tu imagen en /public
+        src="/ubicacion.jpg"
         alt="Ubicación"
         style={{ maxWidth: "400px", width: "100%", marginTop: "20px" }}
       />
@@ -26,31 +30,66 @@ function Contacto() {
 
 function App() {
   const [cart, setCart] = useState([]);
+  const { user, logout } = useAuth();
 
   return (
     <div className="App">
       {/* Navbar */}
       <nav className="navbar">
-        <h1>Rellenitas</h1>
-        <ul>
-          <li>
-            <Link to="/">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/rellenitas">Nuestras Cookies</Link>
-          </li>
-          <li>
-            <Link to="/pedido">Hace tu Pedido</Link>
-          </li>
-        </ul>
-      </nav>
+        {/* Fila 1: Título */}
+        <div className="navbar-top">
+          <h1>Rellenitas</h1>
+        </div>
 
-      {/* Ícono del carrito fijo arriba a la derecha */}
-      <CarritoIcon cart={cart} />
+        {/* Fila 2: Menú + Carrito/Usuario */}
+        <div className="navbar-bottom">
+          <ul>
+            <li>
+              <Link to="/">Inicio</Link>
+            </li>
+            <li>
+              <Link to="/rellenitas">Nuestras Cookies</Link>
+            </li>
+            <li>
+              <Link to="/pedido">Haz tu Pedido</Link>
+            </li>
+          </ul>
+
+          <div className="navbar-right">
+            <CarritoIcon cart={cart} />
+
+            {user ? (
+              <div className="dropdown user-menu">
+                <img src="/usuario.png" alt="Usuario" className="user-icon" />
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/perfil">Mi perfil</Link>
+                  </li>
+                  <li>
+                    <button onClick={logout}>Cerrar sesión</button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <div className="dropdown">
+                <span>Mi cuenta ▾</span>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/registrate">Registrate</Link>
+                  </li>
+                  <li>
+                    <Link to="/login">Inicia sesión</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      </nav>
 
       {/* Rutas */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
         <Route path="/rellenitas" element={<Rellenitas />} />
         <Route
           path="/pedido"
@@ -61,7 +100,14 @@ function App() {
           element={<Carrito cart={cart} setCart={setCart} />}
         />
         <Route path="/descripcion/:id" element={<DescripcionK />} />
-        <Route path="/contacto" element={<Contacto />} /> {/* Nueva ruta */}
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/registrate" element={<Registrate />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
+        <Route
+          path="/perfil"
+          element={<h2>Mi Perfil (datos e historial)</h2>}
+        />
       </Routes>
 
       {/* Footer */}
@@ -70,6 +116,19 @@ function App() {
           <li>
             <Link to="/contacto">Ubicación</Link>
           </li>
+          {!user && (
+            <li className="dropdown-footer">
+              Mi cuenta
+              <ul className="dropdown-content-footer">
+                <li>
+                  <Link to="/registrate">Crea tu cuenta</Link>
+                </li>
+                <li>
+                  <Link to="/login">Inicia sesión</Link>
+                </li>
+              </ul>
+            </li>
+          )}
         </ul>
       </footer>
     </div>
