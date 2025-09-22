@@ -7,6 +7,7 @@ import Rellenitas from "./Rellenitas";
 import Pedido from "./Pedido";
 import Carrito from "./Carrito";
 import CarritoIcon from "./CarritoIcon";
+import DescripcionK from "./descripcionesK";
 
 // Nuevo componente de Ubicación
 function Contacto() {
@@ -59,6 +60,7 @@ function App() {
           path="/carrito"
           element={<Carrito cart={cart} setCart={setCart} />}
         />
+        <Route path="/descripcion/:id" element={<DescripcionK />} />
         <Route path="/contacto" element={<Contacto />} /> {/* Nueva ruta */}
       </Routes>
 

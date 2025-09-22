@@ -1,87 +1,93 @@
-.descripciones-container {
-  text-align: center;
-  padding: 30px 375px;
-  background: linear-gradient(135deg, #ffe0b2, #fff3e0);
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.titulo {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  font-weight: bold;
-}
-
-/* 🔹 Cambiamos de columna a filas */
-.descripciones-grid {
-  display: flex;
-  flex-direction: column; /* apilamos las filas */
-  gap: 30px; /*espacio entre los cuadrado*/
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.descripcion-card {
-  display: flex; /* imagen izquierda + texto derecha */
-  align-items: center;
-  background: #fff;
-  border: 0.5px solid #ccc; /* borde más fino */
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.descripcion-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-/* 🔹 Imagen ocupa el lado izquierdo */
-.descripcion-card img {
-  width: 220px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-right: 20px; /* espacio con el texto */
-  flex-shrink: 0; /* no se achica la imagen */
-}
-
-/* 🔹 Contenedor del texto */
-.descripcion-texto {
-  flex: 1; /* ocupa todo el resto del espacio */
+/* Lista de sabores */
+.lista-sabores {
+  list-style: none; /* sin puntitos */
+  padding: 0;
+  margin: 15px 0;
   text-align: left;
 }
 
-.descripcion-texto h2 {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.descripcion-texto p {
+.lista-sabores li {
+  margin-bottom: 8px;
   font-size: 1rem;
   color: #444;
-  line-height: 1.5;
-  white-space: pre-line; /* respeta saltos de línea */
 }
 
-/* 🔹 Responsive: en pantallas chicas vuelve a columna */
-@media (max-width: 768px) {
-  .descripcion-card {
-    flex-direction: column;
-    text-align: center;
-  }
+/* Botón */
+.btn-volver {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
 
-  .descripcion-card img {
-    margin: 0 0 15px 0;
-    width: 100%;
-    height: auto;
-  }
+.btn-volver:hover {
+  background: linear-gradient(135deg, #e68900, #d35400);
+  transform: scale(1.05);
+}
 
-  .descripcion-texto {
-    text-align: center;
-  }
+/* 🔹 Contenedor principal (imagen + texto) */
+.descripcion-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 20px auto; /* centrado */
+  gap: 20px; /* espacio entre imagen y texto */
+}
+
+/* 🔹 Imagen a la izquierda */
+.descripcion-card img {
+  width: 220px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* 🔹 Texto a la derecha */
+.descripcion-texto {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 🔹 Lista de sabores */
+.lista-sabores {
+  list-style: "🍪 ";
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+.lista-sabores li {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* 🔹 Botón */
+.btn-volver {
+  align-self: flex-start; /* que quede alineado a la izquierda */
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-volver:hover {
+  background: linear-gradient(135deg, #e68900, #d35400);
+  transform: scale(1.05);
 }

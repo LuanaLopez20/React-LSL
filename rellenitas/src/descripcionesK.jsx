@@ -1,82 +1,36 @@
-import React from "react";
-import chocolate from "../assets/chocolate.jpeg";
-import avena from "../assets/avena.jpeg";
-import fruta from "../assets/fruta.jpeg";
-import oreo from "../assets/oreo.jpeg";
-import vainilla from "../assets/vainilla.jpeg";
-import "../descripciones.css";
+import { useParams, Link } from "react-router-dom";
+import "./descripciones.css";
+import cookiesData from "./dataCookie";
 
-const cookies = [
-  {
-    nombre: "Cookie de Chocolate",
-    descripcion: `Tenemos diferentes opciones:
-    🍫 Cocoa Noir: Sin relleno
-    🍩 Nutty Choc: Relleno de nutella
-    🥜 Bonchoco: Relleno de pasta de maní
-    🍓 Choco Burst: Relleno de mermelada
-    🍪 Dream Cream: Relleno de crema oreo`,
-    imagen: chocolate,
-  },
-  {
-    nombre: "Cookie de Avena",
-    descripcion: `Tenemos diferentes opciones:
-    🌾 Oatmeal: Sin relleno
-    🍫 Nutty Oat: Relleno de nutella
-    🥜 Maven: Relleno de pasta de maní
-    🍓 Love: Relleno de mermelada
-    🍪 Creamy Harvest: Relleno de crema oreo`,
-    imagen: avena,
-  },
-  {
-    nombre: "Cookie de Fruta",
-    descripcion: `Tenemos diferentes opciones:
-    🍏 Fruitful: Sin relleno
-    🍫 Nutty Fruit: Relleno de nutella
-    🥜 Peanut: Relleno de pasta de maní
-    🍓 Kiss: Relleno de mermelada
-    🍪 FrutOr: Relleno de crema oreo`,
-    imagen: fruta,
-  },
-  {
-    nombre: "Cookie de Vainilla",
-    descripcion: `Tenemos diferentes opciones:
-    🍪 Chippy: Sin relleno
-    🍫 Nutty: Relleno de nutella
-    🥜 Bonbonita: Relleno de pasta de maní
-    🍓 Sweet: Relleno de mermelada
-    🥛 CreamOr: Relleno de crema de oreo`,
-    imagen: vainilla,
-  },
-  {
-    nombre: "Cookie de Oreo",
-    descripcion: `Tenemos diferentes opciones:
-    🍪 Oreo Bites: Sin relleno
-    🍫 Nutty Or: Relleno de nutella
-    🥜 CrunchPean: Relleno de pasta de maní
-    🍓 TwistOr: Relleno de mermelada
-    ❤️ Cookie Love: Relleno de crema oreo`,
-    imagen: oreo,
-  },
-];
+export default function DescripcionK() {
+  const { id } = useParams(); // obtenemos el id de la URL
+  const cookie = cookiesData.find((c) => c.id === id);
 
-export default function Descripciones() {
+  if (!cookie) {
+    return <h2>No se encontró la cookie</h2>;
+  }
+
+  // 🔹 Convertimos la descripción en lista (cada línea = un <li>)
+  const sabores = cookie.descripcion.split("\n");
+
   return (
     <div className="descripciones-container">
-      <h1 className="titulo">📖 Nuestras Descripciones</h1>
-
+      <h2 className="titulo">{cookie.nombre}</h2>
       <div className="descripciones-grid">
-        {cookies.map((cookie, index) => (
-          <div key={index} className="descripcion-card">
-            {/* Imagen izquierda */}
-            <img src={cookie.imagen} alt={cookie.nombre} />
-
-            {/* Texto derecha */}
-            <div className="descripcion-texto">
-              <h2>{cookie.nombre}</h2>
-              <p>{cookie.descripcion}</p>
-            </div>
+        <div className="descripcion-card">
+          <img src={cookie.imagen} alt={cookie.nombre} width="200px" />
+          <div className="descripcion-texto">
+            <h3>Tenemos diferentes opciones:</h3>
+            <ul className="lista-sabores">
+              {sabores.map((sabor, i) => (
+                <li key={i}>{sabor}</li>
+              ))}
+            </ul>
+            <Link to="/rellenitas">
+              <button className="btn-volver">Volver a nuestras cookies</button>
+            </Link>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
