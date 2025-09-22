@@ -21,6 +21,7 @@
   font-size: 16px;
   color: rgb(0, 0, 0);
   background-color: #fff;
+  box-shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 .cookie-card img {
@@ -29,6 +30,7 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 .cookie-info p {
@@ -38,6 +40,7 @@
 
 .cookie-buttons {
   margin-top: 10px;
+  box-shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 .cookie-buttons button {
@@ -48,8 +51,10 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 .cookie-buttons button:hover {
   background-color: #e68a3f;
+  box-shadow: 0 2px 5px rgb(0, 0, 0);
 }

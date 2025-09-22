@@ -26,7 +26,7 @@ function Pedido({ cart, setCart }) {
 
   return (
     <div className="pedido-page">
-      <h3>Hacé tu pedido</h3>
+      <h3>HACE TU PEDIDO</h3>
 
       <div className="cookies-grid">
         {cookies.map((cookie) => (

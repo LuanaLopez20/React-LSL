@@ -1,0 +1,27 @@
+.contacto-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.contacto-container img {
+  max-width: 400px;
+  width: 100%;
+  margin: 20px;
+  height: auto;
+}
+
+.contacto-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.map-container iframe {
+  border: 0;
+  width: 150%;
+  max-width: 600px;
+  height: 400px;
+  max-height: 500px;
+}

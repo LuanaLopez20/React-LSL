@@ -1,10 +1,5 @@
 .galletitas-container {
   text-align: center;
-  padding: 120px 40px; /* menos padding para que no quede tan angosto */
-  background: linear-gradient(135deg, #6a4f33);
-  min-height: 100vh;
-  color: #fffbfb;
-  font-family: Arial, sans-serif;
 }
 
 .titulo {
