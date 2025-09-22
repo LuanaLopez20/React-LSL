@@ -6,13 +6,18 @@ function Pedido({ cart, setCart }) {
     {
       id: 1,
       name: "COOKIE DE CHOCOLATE",
-      price: 150,
+      price: 1500,
       img: "/cookie-chocolate.jpg",
     },
-    { id: 2, name: "COOKIE OREO", price: 170, img: "/cookie-oreo.jpg" },
-    { id: 3, name: "COOKIE DE FRUTA", price: 160, img: "/cookie-fruta.jpg" },
-    { id: 4, name: "COOKIE AVENA", price: 170, img: "/cookie-avena.jpg" },
-    { id: 5, name: "COOKIE VAINILLA", price: 160, img: "/cookie-vainilla.jpg" },
+    { id: 2, name: "COOKIE OREO", price: 1500, img: "/cookie-oreo.jpg" },
+    { id: 3, name: "COOKIE DE FRUTA", price: 1500, img: "/cookie-fruta.jpg" },
+    { id: 4, name: "COOKIE AVENA", price: 1500, img: "/cookie-avena.jpg" },
+    {
+      id: 5,
+      name: "COOKIE VAINILLA",
+      price: 1500,
+      img: "/cookie-vainilla.jpg",
+    },
   ];
 
   const addToCart = (cookie) => {

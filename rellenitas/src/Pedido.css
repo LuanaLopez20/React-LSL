@@ -1,30 +1,55 @@
+.pedido-page {
+  text-align: center;
+}
+
 .cookies-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* espacio entre las cookies */
-  justify-content: center; /* centra la fila */
-  margin-top: 20px;
+  justify-content: center; /* Centra los elementos dentro de cada celda */
+  margin-top: 30px;
+  gap: 35px;
 }
 
 .cookie-card {
+  display: flex;
+  flex-direction: column; /* Apilar los elementos verticalmente */
+  align-items: center;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
-  width: 150px; /* tamaño fijo para todas las cookies */
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  background-color: #fff;
 }
 
 .cookie-card img {
-  width: 100%; /* que la imagen ocupe todo el ancho de la tarjeta */
+  width: 150px; /* Imagen con tamaño fijo */
+  height: 150px;
+  object-fit: cover;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.ver-carrito-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 15px;
+.cookie-info p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.cookie-buttons {
+  margin-top: 10px;
+}
+
+.cookie-buttons button {
+  padding: 10px;
+  font-size: 14px;
   background-color: #f7b26a;
-  color: white;
-  text-decoration: none;
+  color: rgb(0, 0, 0);
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.cookie-buttons button:hover {
+  background-color: #e68a3f;
 }
