@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-
 import Home from "./Home";
 import Rellenitas from "./Rellenitas";
 import Pedido from "./Pedido";
@@ -36,31 +35,15 @@ function App() {
     <div className="App">
       {/* Navbar */}
       <nav className="navbar">
-        {/* Fila 1: Título */}
+        {/* Fila 1: Título + Carrito + Cuenta */}
         <div className="navbar-top">
           <h1>Rellenitas</h1>
-        </div>
-
-        {/* Fila 2: Menú + Carrito/Usuario */}
-        <div className="navbar-bottom">
-          <ul>
-            <li>
-              <Link to="/">Inicio</Link>
-            </li>
-            <li>
-              <Link to="/rellenitas">Nuestras Cookies</Link>
-            </li>
-            <li>
-              <Link to="/pedido">Haz tu Pedido</Link>
-            </li>
-          </ul>
 
           <div className="navbar-right">
-            <CarritoIcon cart={cart} />
-
+            {/* Mi cuenta primero */}
             {user ? (
               <div className="dropdown user-menu">
-                <img src="/usuario.png" alt="Usuario" className="user-icon" />
+                <span>Mi cuenta ▾</span>
                 <ul className="dropdown-content">
                   <li>
                     <Link to="/perfil">Mi perfil</Link>
@@ -83,7 +66,25 @@ function App() {
                 </ul>
               </div>
             )}
+
+            {/* Carrito después */}
+            <CarritoIcon cart={cart} />
           </div>
+        </div>
+
+        {/* Fila 2: Links centrados (sin cambios) */}
+        <div className="navbar-bottom">
+          <ul className="navbar-links">
+            <li>
+              <Link to="/">Inicio</Link>
+            </li>
+            <li>
+              <Link to="/rellenitas">Nuestras Cookies</Link>
+            </li>
+            <li>
+              <Link to="/pedido">Haz tu Pedido</Link>
+            </li>
+          </ul>
         </div>
       </nav>
 
@@ -104,10 +105,7 @@ function App() {
         <Route path="/registrate" element={<Registrate />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route
-          path="/perfil"
-          element={<h2>Mi Perfil (datos e historial)</h2>}
-        />
+        <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
       </Routes>
 
       {/* Footer */}
