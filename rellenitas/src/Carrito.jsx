@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate para la navegación
 import "./Carrito.css";
-import MediosDeEnvio from "./MediosDeEnvio";
 
 function Carrito({ cart, setCart }) {
   const navigate = useNavigate(); // Inicializa el hook para la navegación
