@@ -8,6 +8,11 @@ function Contacto() {
 
       {/* Contenedor de la imagen y el mapa alineados */}
       <div className="contacto-content">
+        <img
+          src="/ubicacion.jpg"
+          alt="Ubicación"
+          style={{ maxWidth: "400px", width: "100%", marginTop: "20px" }}
+        />
         {/* Imagen opcional */}
         <img src="/ubicacion.jpg" alt="Ubicación" />
 

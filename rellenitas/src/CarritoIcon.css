@@ -1,7 +1,4 @@
 .carrito-icon {
-  position: fixed;
-  top: 20px; /* distancia desde arriba */
-  right: 20px; /* distancia desde la derecha */
   z-index: 1000; /* siempre arriba del contenido */
 }
 

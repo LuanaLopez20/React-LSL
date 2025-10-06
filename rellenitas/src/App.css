@@ -1,10 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap");
 
-
 html {
- scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-
 
 h2,
 h3 {
@@ -36,17 +34,6 @@ body {
   justify-content: center;
 }
 
-
-/* Contenedor principal de la navbar */
-.navbar {
-  display: flex;
-  flex-direction: column; /* título arriba, links abajo */
-  align-items: center; /* centra todo horizontalmente */
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 /* Título "Rellenitas" centrado */
 .navbar h1 {
   font-size: 2.5em;
@@ -61,10 +48,7 @@ body {
   justify-content: center; /* centra los links horizontalmente */
   gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
-
 
 .navbar ul {
   list-style: none;
@@ -75,7 +59,6 @@ body {
 
 .navbar ul li {
   display: inline;
-  margin: 0 15px;
   align-items: center;
   justify-content: center;
 }
@@ -249,10 +232,7 @@ body {
 /* Navbar general */
 .navbar {
   background-color: #f1e5d9;
-  padding: 10px;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column; /* título arriba, links abajo */
   align-items: center;
@@ -265,15 +245,6 @@ body {
   justify-content: center; /* centra toda la fila */
   gap: 2rem; /* espacio entre links y dropdown */
   margin-top: 10px; /* separación del título */
-}
-
-/* Lista de links */
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 /* Contenedor del carrito y dropdown de usuario */
@@ -292,8 +263,8 @@ body {
 .dropdown-content li a,
 .dropdown-content li button {
   display: block;
-  width: 100%;            /* que ocupe todo el ancho del cuadro */
-  padding: 0.6rem 1rem;   /* el mismo padding en todos lados */
+  width: 100%; /* que ocupe todo el ancho del cuadro */
+  padding: 0.6rem 1rem; /* el mismo padding en todos lados */
   box-sizing: border-box; /* evita que el padding desborde */
   border: none;
   outline: none;
@@ -308,7 +279,7 @@ body {
   boxkground-color: #ffe6c9; /* ya lo tenías */
   -shadow: none;
 }
- 
+
 /* ---- SOLO PEGAR ESTO AL FINAL DE App.css ---- */
 
 .navbar-top {
@@ -316,22 +287,6 @@ body {
   justify-content: space-between; /* Logo a la izq, cuenta+carrito a la der */
   align-items: center;
   width: 100%;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* espacio entre Mi cuenta y carrito */
-}
-/* --- Ajustes para navbar --- */
-
-/* Contenedor principal de navbar */
-.navbar {
-  flex-direction: column; /* ya lo tienes, para que quede título arriba y links abajo */
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 /* Contenedor del título "Rellenitas" */
@@ -352,25 +307,9 @@ body {
   margin-top: 0; /* quito margen extra */
 }
 
-/* Lista de links */
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Contenedor de "Mi cuenta" y carrito */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* espacio pequeño entre cuenta y carrito */
-}
-
 /* Estilo para "Mi cuenta" */
 .navbar-right .dropdown span {
-  color: #0074D9; /* azul */
+  color: #0074d9; /* azul */
   font-weight: 600;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -390,10 +329,7 @@ body {
   top: 20px; /* misma altura que el carrito */
   right: 70px; /* separada del carrito, ajusta según necesites */
   z-index: 1000; /* encima del contenido */
-  color: #333; 
+  color: #333;
   text-decoration: none;
   font-weight: bold;
 }
-
-
-
