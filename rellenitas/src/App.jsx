@@ -26,16 +26,23 @@ function App() {
       >
         {/* Fila 1: Título + Carrito + Cuenta */}
         <div className="navbar-top">
-          <div className="width:124px"></div>
-          <div>
+          <div style={{ width: "200px" }}></div>
+          <div style={{ width: "200px" }}>
             <h1>Rellenitas</h1>
           </div>
 
           <div className="navbar-right">
             {/* Mi cuenta primero */}
-            {!user ? (
-              <>
-                <div>className="width:124px"</div>
+            {user ? (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  width: "200px",
+                }}
+              >
+                <div></div>
                 <div className="dropdown user-menu">
                   <span>Mi cuenta ▾</span>
                   <ul className="dropdown-content">
@@ -49,7 +56,7 @@ function App() {
                 </div>
 
                 <CarritoIcon cart={cart} />
-              </>
+              </div>
             ) : (
               <div className="dropdown">
                 <span>Mi cuenta ▾</span>
@@ -67,7 +74,7 @@ function App() {
         </div>
 
         {/* Fila 2: Links centrados (sin cambios) */}
-        <div>className="width: "124px""</div>
+        <div></div>
         <div className="navbar-bottom">
           <ul className="navbar-links">
             <li>
