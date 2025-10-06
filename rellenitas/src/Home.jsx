@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom"; // 👈 para recibir el estado
+import { Link } from "react-router-dom"; // Importamos Link para navegación interna
 import "./App.css";
 
 function Home({ cart, setCart }) {
@@ -89,16 +90,31 @@ function Home({ cart, setCart }) {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer con Redes Sociales y Ubicación */}
       <footer className="footer">
         <div className="socials">
-          <a href="https://www.instagram.com/rellenitassok/?igsh=MWdjZmdyY2xuaXdyNA%3D%3D">
+          <a
+            href="https://www.instagram.com/rellenitassok/?igsh=MWdjZmdyY2xuaXdyNA%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Instagram
           </a>
-          <a href="https://www.facebook.com/profile.php?id=61575698072985&rdid=FmGvhEm6rzaeR7qh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19RvkU5jwp%2F">
+          <a
+            href="https://www.facebook.com/profile.php?id=61575698072985&rdid=FmGvhEm6rzaeR7qh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19RvkU5jwp%2F"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Facebook
           </a>
-          <a href="https://www.whatsapp.com/download">WhatsApp</a>
+          <a
+            href="https://www.whatsapp.com/download"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+          <Link to="/contacto">Ubicación</Link>
         </div>
       </footer>
     </div>

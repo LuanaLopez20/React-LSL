@@ -7,6 +7,7 @@ import Pedido from "./Pedido";
 import Carrito from "./Carrito";
 import CarritoIcon from "./CarritoIcon";
 import DescripcionK from "./descripcionesK";
+import Contacto from "./Contacto";
 import Registrate from "./Registrate";
 import Login from "./Login";
 import RecuperarCuenta from "./RecuperarCuenta";
@@ -88,25 +89,25 @@ function App() {
         </div>
       </nav>
 
-      {/* Rutas */}
-      <Routes>
-        <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
-        <Route path="/rellenitas" element={<Rellenitas />} />
-        <Route
-          path="/pedido"
-          element={<Pedido cart={cart} setCart={setCart} />}
-        />
-        <Route
-          path="/carrito"
-          element={<Carrito cart={cart} setCart={setCart} />}
-        />
-        <Route path="/descripcion/:id" element={<DescripcionK />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/registrate" element={<Registrate />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
-      </Routes>
+      {/* Rutas */}<Routes>
+  <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
+  <Route path="/rellenitas" element={<Rellenitas />} />
+  <Route
+    path="/pedido"
+    element={<Pedido cart={cart} setCart={setCart} />}
+  />
+  <Route
+    path="/carrito"
+    element={<Carrito cart={cart} setCart={setCart} />}
+  />
+  <Route path="/descripcion/:id" element={<DescripcionK />} />
+  <Route path="/contacto" element={<Contacto />} />
+  <Route path="/registrate" element={<Registrate />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
+  <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
+</Routes>
+
 
       {/* Footer */}
       <footer className="footer">
