@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Rellenitas from "./Rellenitas";
@@ -12,10 +12,16 @@ import Registrate from "./Registrate";
 import Login from "./Login";
 import RecuperarCuenta from "./RecuperarCuenta";
 import { useAuth } from "./AuthContext";
+import Checkout from "./Checkout"; // Agregar esta línea
 
 function App() {
   const [cart, setCart] = useState([]);
   const { user, logout } = useAuth();
+  const navigate = useNavigate(); // Navegación programática
+
+  const handleProceedToPayment = () => {
+    navigate("/checkout");
+  };
 
   return (
     <div className="App">
@@ -32,7 +38,6 @@ function App() {
           </div>
 
           <div className="navbar-right">
-            {/* Mi cuenta primero */}
             {user ? (
               <div
                 style={{
@@ -73,8 +78,7 @@ function App() {
           </div>
         </div>
 
-        {/* Fila 2: Links centrados (sin cambios) */}
-        <div></div>
+        {/* Links de navegación */}
         <div className="navbar-bottom">
           <ul className="navbar-links">
             <li>
@@ -111,6 +115,8 @@ function App() {
           path="/perfil"
           element={<h2>Mi Perfil (datos e historial)</h2>}
         />
+        <Route path="/checkout" element={<Checkout />} />{" "}
+        {/* Ruta para el proceso de pago */}
       </Routes>
 
       {/* Footer */}

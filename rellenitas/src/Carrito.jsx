@@ -1,9 +1,10 @@
-// Carrito.jsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate para la navegación
 import "./Carrito.css";
 import MediosDeEnvio from "./MediosDeEnvio";
 
 function Carrito({ cart, setCart }) {
+  const navigate = useNavigate(); // Inicializa el hook para la navegación
   // Agrupar cookies por ID y contar cantidad
   const groupedCart = cart.reduce((acc, item) => {
     if (acc[item.id]) {
@@ -61,6 +62,11 @@ function Carrito({ cart, setCart }) {
     return sum + price * quantity; // Calcula el total correctamente
   }, 0);
 
+  // Función para proceder al pago
+  const handleProceedToPayment = () => {
+    navigate("/checkout"); // Redirige a la página de Checkout
+  };
+
   return (
     <div className="carrito-page">
       <h3>TU CARRITO</h3>
@@ -97,28 +103,10 @@ function Carrito({ cart, setCart }) {
 
       {/* Mostrar el subtotal */}
       <p className="total">Subtotal (sin envio): ${total}</p>
-
-      {/* Mostrar el código postal */}
-      <div className="codigo-postal">
-        <p>
-          <strong>Código Postal:</strong> {codigoPostal}
-        </p>
-
-        <MediosDeEnvio onCodigoPostalChange={handleCodigoPostalChange} />
-      </div>
-
-      {codigoPostal && (
-        <p>
-          <strong>Costo de Envío:</strong> ${envio}
-        </p>
-      )}
-
-      <p>
-        <strong>Total: </strong>${total + envio}
-      </p>
-
       {cart.length > 0 && (
-        <button className="checkout-btn">Proceder al pago</button>
+        <button className="checkout-btn" onClick={handleProceedToPayment}>
+          Proceder al pago
+        </button>
       )}
     </div>
   );
