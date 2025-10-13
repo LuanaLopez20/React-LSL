@@ -5,18 +5,21 @@ const AuthContext = createContext();
 
 // 2️⃣ Creamos un proveedor (provider) que envuelve la app
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // Usuario general
+  const [role, setRole] = useState(null);  // Role del usuario (cliente/admin)
 
-  const login = (usuario) => {
-    setUser(usuario); // Guardamos datos del usuario
+  const login = (usuario, role) => {
+    setUser(usuario);  // Guardamos datos del usuario
+    setRole(role);     // Guardamos el role (cliente o admin)
   };
 
   const logout = () => {
-    setUser(null); // Borramos la sesión
+    setUser(null);     // Borramos la sesión
+    setRole(null);     // Borramos el role
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, role, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

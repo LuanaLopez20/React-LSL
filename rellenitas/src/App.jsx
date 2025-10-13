@@ -9,28 +9,21 @@ import CarritoIcon from "./CarritoIcon";
 import DescripcionK from "./descripcionesK";
 import Contacto from "./Contacto";
 import Registrate from "./Registrate";
-import Login from "./Login";
-import RecuperarCuenta from "./RecuperarCuenta";
+import AdminLogin from "./AdminLogin"; // Login Admin
+import AdminPanel from "./AdminPanel"; // Panel de administración
 import { useAuth } from "./AuthContext";
-import Checkout from "./Checkout"; // Agregar esta línea
+import Checkout from "./Checkout";
+import RecuperarCuenta from "./RecuperarCuenta";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const { user, logout } = useAuth();
-  const navigate = useNavigate(); // Navegación programática
-
-  const handleProceedToPayment = () => {
-    navigate("/checkout");
-  };
+  const { user, logout, role } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="App">
       {/* Navbar */}
-      <nav
-        className="navbar"
-        style={{ paddingLeft: "20px", paddingRight: "20px" }}
-      >
-        {/* Fila 1: Título + Carrito + Cuenta */}
+      <nav className="navbar" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
         <div className="navbar-top">
           <div style={{ width: "200px" }}></div>
           <div style={{ width: "200px" }}>
@@ -39,14 +32,7 @@ function App() {
 
           <div className="navbar-right">
             {user ? (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  width: "200px",
-                }}
-              >
+              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "200px" }}>
                 <div></div>
                 <div className="dropdown user-menu">
                   <span>Mi cuenta ▾</span>
@@ -59,7 +45,11 @@ function App() {
                     </li>
                   </ul>
                 </div>
-
+                {role === 'admin' && (
+                  <Link to="/admin">
+                    <button>Panel de Administración</button>
+                  </Link>
+                )}
                 <CarritoIcon cart={cart} />
               </div>
             ) : (
@@ -70,7 +60,7 @@ function App() {
                     <Link to="/registrate">Registrate</Link>
                   </li>
                   <li>
-                    <Link to="/login">Inicia sesión</Link>
+                    <Link to="/admin">Inicia sesión</Link>
                   </li>
                 </ul>
               </div>
@@ -78,18 +68,12 @@ function App() {
           </div>
         </div>
 
-        {/* Links de navegación */}
         <div className="navbar-bottom">
           <ul className="navbar-links">
-            <li>
-              <Link to="/">Inicio</Link>
-            </li>
-            <li>
-              <Link to="/rellenitas">Nuestras Cookies</Link>
-            </li>
-            <li>
-              <Link to="/pedido">Haz tu Pedido</Link>
-            </li>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/rellenitas">Nuestras Cookies</Link></li>
+            <li><Link to="/pedido">Haz tu Pedido</Link></li>
+            {role === 'admin' && <li><Link to="/admin">Panel de Administración</Link></li>}
           </ul>
         </div>
       </nav>
@@ -98,43 +82,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
         <Route path="/rellenitas" element={<Rellenitas />} />
-        <Route
-          path="/pedido"
-          element={<Pedido cart={cart} setCart={setCart} />}
-        />
-        <Route
-          path="/carrito"
-          element={<Carrito cart={cart} setCart={setCart} />}
-        />
+        <Route path="/pedido" element={<Pedido cart={cart} setCart={setCart} />} />
+        <Route path="/carrito" element={<Carrito cart={cart} setCart={setCart} />} />
         <Route path="/descripcion/:id" element={<DescripcionK />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/registrate" element={<Registrate />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route
-          path="/perfil"
-          element={<h2>Mi Perfil (datos e historial)</h2>}
-        />
-        <Route path="/checkout" element={<Checkout />} />{" "}
-        {/* Ruta para el proceso de pago */}
+        <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
+        <Route path="/checkout" element={<Checkout />} /> {/* Ruta para el proceso de pago */}
+        <Route path="/admin" element={<AdminLogin/>} /> 
+        <Route 
+          path="/admin" 
+          element={role === 'admin' ? <AdminPanel /> : <h2>No autorizado</h2>} 
+        /> {/* Acceso restringido para admin */}
       </Routes>
 
       {/* Footer */}
       <footer className="footer">
         <ul>
-          <li>
-            <Link to="/contacto">Ubicación</Link>
-          </li>
+          <li><Link to="/contacto">Ubicación</Link></li>
           {!user && (
             <li className="dropdown-footer">
               Mi cuenta
               <ul className="dropdown-content-footer">
-                <li>
-                  <Link to="/registrate">Crea tu cuenta</Link>
-                </li>
-                <li>
-                  <Link to="/login">Inicia sesión</Link>
-                </li>
+                <li><Link to="/registrate">Crea tu cuenta</Link></li>
               </ul>
             </li>
           )}

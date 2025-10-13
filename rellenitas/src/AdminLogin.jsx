@@ -26,10 +26,21 @@ export default function Login() {
       return;
     }
 
-    // Simulamos login exitoso
-    login({ email: formData.usuarioEmail }); // 👈 guardamos el usuario
-    alert("¡Bienvenido a Rellenitas! 🍪");
-    navigate("/"); // Redirige a la página principal
+    // Validar las credenciales de los administradores
+    if (
+      (formData.usuarioEmail === "KarenDiaz" && formData.password === "Diaz1234") ||
+      (formData.usuarioEmail === "LuanaLopez" && formData.password === "Lopez1234")
+    ) {
+      // Login como admin
+      login({ email: formData.usuarioEmail }, "admin");
+      alert("¡Bienvenido Administrador!");
+      navigate("/admin"); // Redirigir al panel de administración
+    } else {
+      // Verificar usuario común
+      login({ email: formData.usuarioEmail });
+      alert("¡Bienvenido a Rellenitas! 🍪");
+      navigate("/"); // Redirigir a la página principal
+    }
   };
 
   return (
@@ -55,7 +66,6 @@ export default function Login() {
             onChange={handleChange}
             required
           />
-          {/* Enlace actualizado para recuperar cuenta */}
           <Link to="/recuperar-cuenta" className="forgot-password">
             ¿Olvidaste tu contraseña?
           </Link>

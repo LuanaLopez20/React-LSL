@@ -274,9 +274,8 @@ body {
 .dropdown-content li a:focus,
 .dropdown-content li button:hover,
 .dropdown-content li button:focus {
-  bacborder: none;
   outline: none;
-  boxkground-color: #ffe6c9; /* ya lo tenías */
+  background-color: #ffe6c9; /* ya lo tenías */
   -shadow: none;
 }
 
