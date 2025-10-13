@@ -297,15 +297,16 @@ body {
   align-self: flex-start; /* para que quede alineado a la izquierda */
 }
 
-/* Contenedor que agrupa links y parte derecha (cuenta + carrito) */
 .navbar-bottom {
   display: flex;
-  justify-content: space-between; /* links a la izquierda, cuenta+carrito a la derecha */
+  flex-direction: column;
   align-items: center;
+  justify-content: center;  /* centra los links debajo del título */
+  gap: 0;                   /* elimina espacios innecesarios */
+  margin-top: 0;            /* si quieres más pegado al título */
   width: 100%;
-  gap: 2rem;
-  margin-top: 0; /* quito margen extra */
 }
+
 
 /* Estilo para "Mi cuenta" */
 .navbar-right .dropdown span {
@@ -332,4 +333,34 @@ body {
   color: #333;
   text-decoration: none;
   font-weight: bold;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #ff6f61;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+.dropbtn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-weight: 600;
 }

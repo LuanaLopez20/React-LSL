@@ -32,7 +32,7 @@ function App() {
           </div>
 
           <div className="navbar-right">
-            {/* Mi cuenta primero */}
+            {/* Si el usuario está logueado */}
             {user ? (
               <div
                 style={{
@@ -42,9 +42,16 @@ function App() {
                   width: "200px",
                 }}
               >
-                <div></div>
                 <div className="dropdown user-menu">
-                  <span>Mi cuenta ▾</span>
+                  <div className="dropbtn">
+                    {/* 👇 Círculo con la inicial del usuario */}
+                    <div className="avatar">
+                      {user.email[0].toUpperCase()}
+                    </div>
+                    <span style={{ marginLeft: "5px" }}>▾</span>
+                  </div>
+
+                  {/* Menú desplegable */}
                   <ul className="dropdown-content">
                     <li>
                       <Link to="/perfil">Mi perfil</Link>
@@ -58,6 +65,7 @@ function App() {
                 <CarritoIcon cart={cart} />
               </div>
             ) : (
+              // Si NO está logueado
               <div className="dropdown">
                 <span>Mi cuenta ▾</span>
                 <ul className="dropdown-content">
@@ -73,8 +81,7 @@ function App() {
           </div>
         </div>
 
-        {/* Fila 2: Links centrados (sin cambios) */}
-        <div></div>
+        {/* Fila 2: Links centrados */}
         <div className="navbar-bottom">
           <ul className="navbar-links">
             <li>
@@ -107,10 +114,7 @@ function App() {
         <Route path="/registrate" element={<Registrate />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route
-          path="/perfil"
-          element={<h2>Mi Perfil (datos e historial)</h2>}
-        />
+        <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
       </Routes>
 
       {/* Footer */}

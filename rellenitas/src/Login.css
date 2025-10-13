@@ -9,6 +9,7 @@
   background: linear-gradient(135deg, #fff0d9 0%, #ffe6c9 100%);
   min-height: 80vh;
   box-sizing: border-box;
+  
 }
 
 /* Título */
@@ -24,17 +25,14 @@
 
 /* Formulario */
 .login-form {
+  max-width: 420px;
   width: 100%;
-  max-width: 460px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  background: #fff8f0;
-  padding: 1.8rem;
-  border-radius: 18px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  margin-left: auto;
+  margin-right: auto;
+  /* añade */
   box-sizing: border-box;
 }
+
 
 /* Inputs */
 .login-form input {
@@ -106,4 +104,22 @@
   color: #28a745; /* verde */
   font-weight: 600;
   font-size: 0.95rem;
+}
+
+/* Recuadro (card) central para el login */
+.login-card {
+  background-color: #fff7ef;
+  border: 2px solid #ffb347;
+  border-radius: 20px;
+  padding: 2.2rem 2rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(255, 111, 97, 0.15);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Centrar mejor el título dentro del card */
+.login-card h2 {
+  margin-bottom: 1.2rem;
 }
