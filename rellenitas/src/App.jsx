@@ -11,6 +11,7 @@ import Contacto from "./Contacto";
 import Registrate from "./Registrate";
 import Login from "./Login";
 import RecuperarCuenta from "./RecuperarCuenta";
+import Perfil from "./Perfil";
 import { useAuth } from "./AuthContext";
 
 function App() {
@@ -45,9 +46,7 @@ function App() {
                 <div className="dropdown user-menu">
                   <div className="dropbtn">
                     {/* 👇 Círculo con la inicial del usuario */}
-                    <div className="avatar">
-                      {user.email[0].toUpperCase()}
-                    </div>
+                    <div className="avatar">{user.email[0].toUpperCase()}</div>
                     <span style={{ marginLeft: "5px" }}>▾</span>
                   </div>
 
@@ -114,7 +113,10 @@ function App() {
         <Route path="/registrate" element={<Registrate />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
+        <Route
+          path="/perfil"
+          element={<h2>Mi Perfil (datos e historial)</h2>}
+        />
       </Routes>
 
       {/* Footer */}

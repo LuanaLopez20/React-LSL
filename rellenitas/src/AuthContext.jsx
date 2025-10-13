@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 // 1️⃣ Creamos el contexto
 const AuthContext = createContext();
@@ -7,12 +7,28 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
+  // Recuperar usuario de localStorage al montar
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  // Para debugear o desarrollo
+  useEffect(() => {
+    console.log("user", user);
+  }, [user]);
+
   const login = (usuario) => {
-    setUser(usuario); // Guardamos datos del usuario
+    setUser(usuario);
+    localStorage.setItem("user", JSON.stringify(usuario));
   };
 
+  // Al cerrar sesión, limpiar state y localStorage
   const logout = () => {
-    setUser(null); // Borramos la sesión
+    setUser(null);
+    localStorage.removeItem("user");
   };
 
   return (

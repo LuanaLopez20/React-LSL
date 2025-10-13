@@ -1,0 +1,44 @@
+.perfil-container {
+  padding: 40px;
+  background-color: #fdf6f0;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-titulo {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #5a3b1d;
+  text-align: center;
+}
+
+.perfil-subtitulo {
+  font-size: 20px;
+  margin-top: 30px;
+  color: #7b4b2a;
+}
+
+.perfil-dato {
+  font-size: 18px;
+  color: #333;
+}
+
+.perfil-historial {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #444;
+}
+
+.sin-compras {
+  color: #b00;
+  font-style: italic;
+}
+
+.no-login {
+  padding: 40px;
+  text-align: center;
+  font-size: 20px;
+  color: #c00;
+}

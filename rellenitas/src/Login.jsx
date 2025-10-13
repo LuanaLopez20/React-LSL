@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext"; // 👈 Importamos el contexto
+import { useAuth } from "./AuthContext";
 import "./Login.css";
 
 export default function Login() {
@@ -11,7 +11,7 @@ export default function Login() {
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth(); // 👈 usamos login del contexto
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,49 +26,61 @@ export default function Login() {
       return;
     }
 
-    // Simulamos login exitoso
-    login({ email: formData.usuarioEmail }); // 👈 guardamos el usuario
+    // Simulamos un objeto usuario que normalmente vendría del backend
+    const usuarioMock = {
+      nombre: formData.usuarioEmail, // uso el email como nombre temporal
+      historial: ["Compra 1", "Compra 2"], // ejemplo de historial
+    };
+
+    // Guardamos el usuario en localStorage
+    localStorage.setItem("user", JSON.stringify(usuarioMock));
+
+    // Hacemos login en el contexto (si tu login necesita algo más ajusta aquí)
+    login({ email: formData.usuarioEmail });
+
     alert("¡Bienvenido a Rellenitas! 🍪");
-    navigate("/"); // Redirige a la página principal
+    navigate("/");
   };
 
   return (
     <div className="login-page">
       <h2>Inicia sesión en Rellenitas 🍪</h2>
 
-      <form onSubmit={handleSubmit} className="login-form">
-        <input
-          type="text"
-          name="usuarioEmail"
-          placeholder="Usuario o Gmail"
-          value={formData.usuarioEmail}
-          onChange={handleChange}
-          required
-        />
-
-        <div className="password-wrapper">
+      {/* 🔹 SOLO el formulario dentro del recuadro */}
+      <div className="login-card">
+        <form onSubmit={handleSubmit} className="login-form">
           <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            value={formData.password}
+            type="text"
+            name="usuarioEmail"
+            placeholder="Usuario o Gmail"
+            value={formData.usuarioEmail}
             onChange={handleChange}
             required
           />
-          {/* Enlace actualizado para recuperar cuenta */}
-          <Link to="/recuperar-cuenta" className="forgot-password">
-            ¿Olvidaste tu contraseña?
-          </Link>
-        </div>
 
-        {error && <p className="error">{error}</p>}
+          <div className="password-wrapper">
+            <input
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <Link to="/recuperar-cuenta" className="forgot-password">
+              ¿Olvidaste tu contraseña?
+            </Link>
+          </div>
 
-        <button type="submit">Inicia sesión</button>
+          {error && <p className="error">{error}</p>}
 
-        <p className="login-register-msg">
-          ¿No tenés cuenta todavía? <Link to="/registrate">Regístrate</Link>
-        </p>
-      </form>
+          <button type="submit">Inicia sesión</button>
+
+          <p className="login-register-msg">
+            ¿No tenés cuenta todavía? <Link to="/registrate">Regístrate</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
