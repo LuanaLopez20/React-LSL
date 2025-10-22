@@ -1,0 +1,163 @@
+.container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f1e5d9; /* Fondo beige claro */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  min-height: 80vh; /* Asegura que el panel ocupe el 80% de la altura */
+}
+
+/* Barra superior (AppBar) */
+.MuiAppBar-root {
+  background-color: #6a4f33; /* Marrón oscuro */
+}
+
+.MuiToolbar-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MuiTypography-root {
+  color: white; /* Texto blanco */
+  font-family: "Rubik Gemstones", sans-serif;
+}
+
+.MuiTypography-h5 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3e2723; /* Marrón oscuro */
+}
+
+/* Botones de acción */
+.MuiButton-root {
+  font-family: "Rubik Gemstones", sans-serif; /* Fuente personalizada */
+  font-weight: bold;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+  transition: background-color 0.3s ease;
+}
+
+.MuiButton-root:hover {
+  background-color: #7b5c42; /* Marrón medio al hacer hover */
+}
+
+.MuiPaper-root:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.MuiButton-outlined:hover {
+  background-color: #5d4037; /* Marrón más oscuro */
+}
+
+/* Mensaje de "No autorizado" */
+.no-autorizado {
+  text-align: center;
+  font-size: 20px;
+  color: #d32f2f; /* Rojo para resaltar el mensaje */
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+/* Estilos generales para el panel */
+h2, h3 {
+  font-family: "Rubik Gemstones", sans-serif; /* Usando la fuente personalizada */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #6a4f33; /* Fondo marrón */
+  font-family: sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #f1e5d9; /* Fondo beige claro */
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Título arriba, links abajo */
+  align-items: center;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  justify-content: center; /* Centra los links horizontalmente */
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #6a4f33; /* Marrón oscuro */
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Texto del dropdown */
+.dropdown span {
+  color: #6a4f33;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+/* Contenido del dropdown */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f1e5d9;
+  min-width: 160px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+/* Mostrar dropdown al hover */
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Items del dropdown */
+.dropdown-content li {
+  list-style: none;
+}
+
+/* Enlaces y botones */
+.dropdown-content li a,
+.dropdown-content li button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #6a4f33;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover de los items */
+.dropdown-content li a:hover,
+.dropdown-content li button:hover {
+  background-color: #ffe6c9;
+}

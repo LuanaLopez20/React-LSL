@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Rellenitas from "./Rellenitas";
@@ -17,7 +17,7 @@ import RecuperarCuenta from "./RecuperarCuenta";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const { user, logout, role } = useAuth();
+  const { user, logout, role } = useAuth(); // 'role' es parte del contexto de autenticación
   const navigate = useNavigate();
 
   return (
@@ -45,11 +45,6 @@ function App() {
                     </li>
                   </ul>
                 </div>
-                {role === 'admin' && (
-                  <Link to="/admin">
-                    <button>Panel de Administración</button>
-                  </Link>
-                )}
                 <CarritoIcon cart={cart} />
               </div>
             ) : (
@@ -90,11 +85,10 @@ function App() {
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
         <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
         <Route path="/checkout" element={<Checkout />} /> {/* Ruta para el proceso de pago */}
-        <Route path="/admin" element={<AdminLogin/>} /> 
-        <Route 
-          path="/admin" 
-          element={role === 'admin' ? <AdminPanel /> : <h2>No autorizado</h2>} 
-        /> {/* Acceso restringido para admin */}
+
+        {/* Rutas de administración */}
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin" element={role === 'admin' ? <AdminPanel /> : <Navigate to="/admin-login" />} />
       </Routes>
 
       {/* Footer */}
