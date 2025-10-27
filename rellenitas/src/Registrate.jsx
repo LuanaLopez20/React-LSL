@@ -1,107 +1,154 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // 👈 agregamos useNavigate
-import "./Registrate.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Perfil.css";
 
-export default function Registrate() {
-  const navigate = useNavigate(); // 👈 para redirigir
-  const [formData, setFormData] = useState({
-    nombre: "",
-    usuario: "",
-    email: "",
-    password: "",
-  });
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+export default function Perfil() {
+  const [usuario, setUsuario] = useState(null);
+  const [editando, setEditando] = useState(false);
+  const navigate = useNavigate();
 
-  // Simulación de usuarios ya registrados
-  const usuariosRegistrados = ["juan123", "maria456", "carlos789"];
+  // 🔹 Cargar usuario del localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUsuario(JSON.parse(storedUser));
+      } catch (error) {
+        console.error("Error parsing user from localStorage:", error);
+      }
+    }
+  }, []);
 
+  if (!usuario) {
+    return (
+      <div className="perfil-container">
+        <div className="perfil-card">
+          <h2 className="no-login">No has iniciado sesión</h2>
+        </div>
+      </div>
+    );
+  }
+
+  // 🔹 Manejadores
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); // limpiar error al escribir
+    const { name, value } = e.target;
+    setUsuario({ ...usuario, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleGuardar = () => {
+    // Guardar cambios en "user"
+    localStorage.setItem("user", JSON.stringify(usuario));
 
-    // Validación: usuario ya registrado
-    if (usuariosRegistrados.includes(formData.usuario.toLowerCase())) {
-      setError("Ese usuario ya está ocupado ");
-      return;
+    // También actualizar el usuario en la lista "users"
+    const usersJSON = localStorage.getItem("users");
+    const users = usersJSON ? JSON.parse(usersJSON) : [];
+    const index = users.findIndex((u) => u.usuario === usuario.usuario);
+
+    if (index !== -1) {
+      users[index] = usuario;
+      localStorage.setItem("users", JSON.stringify(users));
     }
 
-    // Simulamos registro exitoso
-    console.log("Datos enviados:", formData);
-    alert("¡Te registraste en Rellenitas! 🎉🍪");
-
-    // Redirigir a Home con mensaje de bienvenida
-    navigate("/", { state: { usuario: formData.usuario } });
-
-    setFormData({ nombre: "", usuario: "", email: "", password: "" });
+    setEditando(false);
   };
 
   return (
-    <div className="rln-page">
-      <h2 className="rln-title">Regístrate en Rellenitas 🍪</h2>
-      <p className="rln-desc">
-        Creá tu cuenta y sé parte de nuestra comunidad para participar en
-        sorteos, recibir sorpresas y mucho más.
-      </p>
+    <div className="perfil-container">
+      <div className="perfil-card">
+        <h2 className="perfil-titulo">Mi Perfil ✨</h2>
 
-      <form onSubmit={handleSubmit} className="rln-form">
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Tu nombre"
-          value={formData.nombre}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="text"
-          name="usuario"
-          placeholder="Crea tu usuario"
-          value={formData.usuario}
-          onChange={handleChange}
-          required
-        />
-        {error && <p style={{ color: "red", fontSize: "0.9rem" }}>{error}</p>}
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Tu email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-
-        <div className="password-container">
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Contraseña"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <span
-            className="toggle-password"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "👁️" : "👁️‍🗨️"}
-          </span>
+        <div className="perfil-datos">
+          <p>
+            <strong>Nombre:</strong>{" "}
+            {editando ? (
+              <input
+                type="text"
+                name="nombre"
+                value={usuario.nombre}
+                onChange={handleChange}
+              />
+            ) : (
+              usuario.nombre
+            )}
+          </p>
+          <p>
+            <strong>Usuario:</strong> {usuario.usuario}
+          </p>
+          <p>
+            <strong>Email:</strong>{" "}
+            {editando ? (
+              <input
+                type="email"
+                name="email"
+                value={usuario.email}
+                onChange={handleChange}
+              />
+            ) : (
+              usuario.email
+            )}
+          </p>
         </div>
 
-        <button type="submit">Registrarme</button>
+        <h3 className="perfil-subtitulo">Información Personal</h3>
+        <div className="perfil-info">
+          <p>
+            <strong>Teléfono:</strong>{" "}
+            {editando ? (
+              <input
+                type="text"
+                name="telefono"
+                value={usuario.telefono || ""}
+                onChange={handleChange}
+              />
+            ) : (
+              usuario.telefono || "No definido"
+            )}
+          </p>
+          <p>
+            <strong>Dirección:</strong>{" "}
+            {editando ? (
+              <input
+                type="text"
+                name="direccion"
+                value={usuario.direccion || ""}
+                onChange={handleChange}
+              />
+            ) : (
+              usuario.direccion || "No definida"
+            )}
+          </p>
+        </div>
 
-        {/* Mensaje de login */}
-        <p className="rln-login-msg">
-          ¿Ya estás registrado? Inicia sesión con tu{" "}
-          <Link to="/login">Gmail o usuario y contraseña</Link>.
-        </p>
-      </form>
+        <h3 className="perfil-subtitulo">Historial de Compras 🛍️</h3>
+        {usuario.historial && usuario.historial.length > 0 ? (
+          <ul className="perfil-historial">
+            {usuario.historial.map((compra, index) => (
+              <li key={index}>{compra}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="sin-compras">Todavía no tienes ninguna compra.</p>
+        )}
+
+        <div className="perfil-botones">
+          {editando ? (
+            <button className="boton-guardar" onClick={handleGuardar}>
+              Guardar cambios 💾
+            </button>
+          ) : (
+            <button className="boton-editar" onClick={() => setEditando(true)}>
+              Editar perfil
+            </button>
+          )}
+
+          <button
+            className="boton-crear-historial"
+            onClick={() => navigate("/pedido")}
+          >
+            Crear historial
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

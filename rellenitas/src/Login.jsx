@@ -20,23 +20,44 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { usuarioEmail, password } = formData;
 
-    if (!formData.usuarioEmail || !formData.password) {
+    if (!usuarioEmail || !password) {
       setError("Por favor completa todos los campos");
       return;
     }
 
-    // Simulamos un objeto usuario que normalmente vendría del backend
-    const usuarioMock = {
-      nombre: formData.usuarioEmail, // uso el email como nombre temporal
-      historial: ["Compra 1", "Compra 2"], // ejemplo de historial
+    // 🔹 Recuperamos los usuarios registrados desde localStorage
+    const usersJSON = localStorage.getItem("users");
+    const users = usersJSON ? JSON.parse(usersJSON) : [];
+
+    // 🔹 Buscar usuario por nombre de usuario o email (ahora sí coincide con Registrate.jsx)
+    const foundUser = users.find(
+      (u) =>
+        u.usuario.toLowerCase() === usuarioEmail.toLowerCase() ||
+        u.email.toLowerCase() === usuarioEmail.toLowerCase()
+    );
+
+    if (!foundUser) {
+      setError("No tienes una cuenta creada");
+      return;
+    }
+
+    if (foundUser.password !== password) {
+      setError("Contraseña incorrecta");
+      return;
+    }
+
+    // 🔹 Si todo está bien, iniciar sesión
+    const usuarioData = {
+      nombre: foundUser.nombre,
+      usuario: foundUser.usuario,
+      email: foundUser.email,
+      historial: foundUser.historial || [],
     };
 
-    // Guardamos el usuario en localStorage
-    localStorage.setItem("user", JSON.stringify(usuarioMock));
-
-    // Hacemos login en el contexto (si tu login necesita algo más ajusta aquí)
-    login({ email: formData.usuarioEmail });
+    localStorage.setItem("user", JSON.stringify(usuarioData));
+    login({ email: foundUser.email });
 
     alert("¡Bienvenido a Rellenitas! 🍪");
     navigate("/");
@@ -46,7 +67,6 @@ export default function Login() {
     <div className="login-page">
       <h2>Inicia sesión en Rellenitas 🍪</h2>
 
-      {/* 🔹 SOLO el formulario dentro del recuadro */}
       <div className="login-card">
         <form onSubmit={handleSubmit} className="login-form">
           <input

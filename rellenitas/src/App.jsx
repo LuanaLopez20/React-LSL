@@ -113,10 +113,7 @@ function App() {
         <Route path="/registrate" element={<Registrate />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route
-          path="/perfil"
-          element={<h2>Mi Perfil (datos e historial)</h2>}
-        />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
 
       {/* Footer */}
