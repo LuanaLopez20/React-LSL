@@ -13,8 +13,6 @@ function Contacto() {
           alt="Ubicación"
           style={{ maxWidth: "400px", width: "100%", marginTop: "20px" }}
         />
-        {/* Imagen opcional */}
-        <img src="/ubicacion.jpg" alt="Ubicación" />
 
         {/* Mapa interactivo */}
         <div className="map-container">
