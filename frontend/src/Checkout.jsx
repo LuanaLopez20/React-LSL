@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Si usas React Router para la navegación
+import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
 function Checkout() {
@@ -66,8 +66,7 @@ function Checkout() {
       setTimeout(() => {
         clearInterval(timer);
         navigate("/"); // Redirige al inicio, usando React Router
-      }, 3000)
-  
+      }, 3000);
 
       // Limpiar el intervalo cuando el componente se desmonte
       return () => clearInterval(timer);
@@ -116,7 +115,9 @@ function Checkout() {
       const lastNameInput = document.querySelector('input[name="apellido"]');
 
       if (!emailInput.value || !nameInput.value || !lastNameInput.value) {
-        setFormError("Por favor, completa todos los campos en Datos Personales.");
+        setFormError(
+          "Por favor, completa todos los campos en Datos Personales."
+        );
         hasError = true;
       }
     }
@@ -124,12 +125,20 @@ function Checkout() {
     if (step === 2) {
       const addressInput = document.querySelector('input[name="direccion"]');
       const numberInput = document.querySelector('input[name="numero"]');
-      const postalCodeInput = document.querySelector('input[name="codigoPostal"]');
+      const postalCodeInput = document.querySelector(
+        'input[name="codigoPostal"]'
+      );
 
       // Validación solo si se selecciona Envío a domicilio
       if (tipoEnvio === "domicilio") {
-        if (!addressInput.value || !numberInput.value || !postalCodeInput.value) {
-          setFormError("Por favor, completa todos los campos en Dirección de Envío.");
+        if (
+          !addressInput.value ||
+          !numberInput.value ||
+          !postalCodeInput.value
+        ) {
+          setFormError(
+            "Por favor, completa todos los campos en Dirección de Envío."
+          );
           hasError = true;
         }
       } else if (!tipoEnvio) {
@@ -141,8 +150,14 @@ function Checkout() {
     if (step === 3) {
       if (paymentMethod === "tarjeta") {
         // Validaciones más precisas usando el estado formateado
-        if (!isCardNumberValid(cardNumber) || !isCvvValid(cvv) || !isCardHolderValid(cardHolder)) {
-          setFormError("Por favor, completa correctamente los campos de pago con tarjeta.");
+        if (
+          !isCardNumberValid(cardNumber) ||
+          !isCvvValid(cvv) ||
+          !isCardHolderValid(cardHolder)
+        ) {
+          setFormError(
+            "Por favor, completa correctamente los campos de pago con tarjeta."
+          );
           hasError = true;
         }
       } else if (paymentMethod === "transferencia") {
@@ -193,7 +208,10 @@ function Checkout() {
       {pedidoConfirmado ? (
         <div className="mensaje-exitoso">
           <h3>¡Tu pedido fue exitoso!</h3>
-          <p>En brevedad nos comunicaremos con vos para entregarte nuestras rellenitas.</p>
+          <p>
+            En brevedad nos comunicaremos con vos para entregarte nuestras
+            rellenitas.
+          </p>
           <p style={{ fontSize: "0.8em", color: "#888" }}>
             Te redirigiremos al inicio en {countdown} segundos...
           </p>
@@ -201,7 +219,9 @@ function Checkout() {
       ) : (
         <>
           <div className="steps">
-            <div className={`step ${step === 1 ? "active" : ""}`}>1. Datos Personales</div>
+            <div className={`step ${step === 1 ? "active" : ""}`}>
+              1. Datos Personales
+            </div>
             <div className={`step ${step === 2 ? "active" : ""}`}>2. Envío</div>
             <div className={`step ${step === 3 ? "active" : ""}`}>3. Pago</div>
           </div>
@@ -215,7 +235,12 @@ function Checkout() {
               <h3>Datos Personales</h3>
               <input type="email" placeholder="Correo electrónico" required />
               <input type="text" name="nombre" placeholder="Nombre" required />
-              <input type="text" name="apellido" placeholder="Apellido" required />
+              <input
+                type="text"
+                name="apellido"
+                placeholder="Apellido"
+                required
+              />
               <div>
                 <button onClick={nextStep}>Continuar</button>
               </div>
@@ -228,11 +253,21 @@ function Checkout() {
               <h3>Selecciona el tipo de envío</h3>
               <div>
                 <label>
-                  <input type="radio" value="domicilio" checked={tipoEnvio === "domicilio"} onChange={handleTipoEnvioChange} />
+                  <input
+                    type="radio"
+                    value="domicilio"
+                    checked={tipoEnvio === "domicilio"}
+                    onChange={handleTipoEnvioChange}
+                  />
                   Envío a domicilio
                 </label>
                 <label>
-                  <input type="radio" value="sucursal" checked={tipoEnvio === "sucursal"} onChange={handleTipoEnvioChange} />
+                  <input
+                    type="radio"
+                    value="sucursal"
+                    checked={tipoEnvio === "sucursal"}
+                    onChange={handleTipoEnvioChange}
+                  />
                   Retiro por sucursal
                 </label>
               </div>
@@ -241,9 +276,26 @@ function Checkout() {
               {tipoEnvio === "domicilio" && (
                 <div>
                   <h4>Dirección de Envío</h4>
-                  <input type="text" name="direccion" placeholder="Dirección" required />
-                  <input type="text" name="numero" placeholder="Número" required onChange={handleNumeroChange} />
-                  <input type="text" name="codigoPostal" placeholder="Código Postal" required onChange={handleCodigoPostalChange} />
+                  <input
+                    type="text"
+                    name="direccion"
+                    placeholder="Dirección"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="numero"
+                    placeholder="Número"
+                    required
+                    onChange={handleNumeroChange}
+                  />
+                  <input
+                    type="text"
+                    name="codigoPostal"
+                    placeholder="Código Postal"
+                    required
+                    onChange={handleCodigoPostalChange}
+                  />
                   {costoEnvio !== null && <p>Costo de envío: ${costoEnvio}</p>}
                 </div>
               )}
@@ -252,7 +304,10 @@ function Checkout() {
               {tipoEnvio === "sucursal" && (
                 <div>
                   <h4>Ubicación de la Sucursal</h4>
-                  <p>Dirección: Calle Ficticia 123, Local 5, Ciudad de Buenos Aires</p>
+                  <p>
+                    Dirección: Calle Ficticia 123, Local 5, Ciudad de Buenos
+                    Aires
+                  </p>
                 </div>
               )}
 
@@ -269,11 +324,21 @@ function Checkout() {
               <h3>Pago</h3>
               <div>
                 <label>
-                  <input type="radio" value="tarjeta" checked={paymentMethod === "tarjeta"} onChange={handlePaymentMethodChange} />
+                  <input
+                    type="radio"
+                    value="tarjeta"
+                    checked={paymentMethod === "tarjeta"}
+                    onChange={handlePaymentMethodChange}
+                  />
                   Pago con tarjeta
                 </label>
                 <label>
-                  <input type="radio" value="transferencia" checked={paymentMethod === "transferencia"} onChange={handlePaymentMethodChange} />
+                  <input
+                    type="radio"
+                    value="transferencia"
+                    checked={paymentMethod === "transferencia"}
+                    onChange={handlePaymentMethodChange}
+                  />
                   Transferencia Bancaria
                 </label>
               </div>
@@ -316,9 +381,15 @@ function Checkout() {
               {/* Si elige "Transferencia", mostrar los campos de transferencia */}
               {paymentMethod === "transferencia" && (
                 <div>
-                  <p><strong>CVU:</strong> {cvu}</p>
-                  <p><strong>Alias:</strong> {alias}</p>
-                  <p><strong>Correo:</strong> {email}</p>
+                  <p>
+                    <strong>CVU:</strong> {cvu}
+                  </p>
+                  <p>
+                    <strong>Alias:</strong> {alias}
+                  </p>
+                  <p>
+                    <strong>Correo:</strong> {email}
+                  </p>
                   <p>Envía el comprobante de la transferencia a este correo.</p>
                 </div>
               )}

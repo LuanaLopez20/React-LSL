@@ -32,10 +32,7 @@ export default function Rellenitas() {
     },
   ];
 
-  // Combinamos las cookies dinámicas y fijas
   const allCookies = [...cookiesData, ...fixedCookies];
-
-  // Recortamos para mostrar solo las primeras 5 galletitas
   const firstFiveCookies = allCookies.slice(0, 5);
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // podemos usar el mismo CSS que Login
+import "./Login.css";
 
 export default function RecuperarCuenta() {
   const [email, setEmail] = useState("");
@@ -19,8 +19,7 @@ export default function RecuperarCuenta() {
       "Te enviamos un código para que puedas restablecer tu contraseña."
     );
 
-    // Opcional: después de unos segundos, puedes redirigir al login
-    // setTimeout(() => navigate("/login"), 4000);
+    setTimeout(() => navigate("/login"), 4000);
   };
 
   return (
