@@ -1,29 +1,24 @@
-/* 🌸 Contenedor general */
-
-/* ❌ Eliminado: esto borraba el fondo global de la app */
-/*
-body {
-  background: none !important;
-}
-*/
-
-/* 🌸 Contenedor general (solo afecta al login) */
+/* Contenedor general (solo afecta al login) */
+/* Contenedor general (solo afecta al login) */
 body.login-active,
 .login-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; 
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background: linear-gradient(135deg, #241f18 0%, #883d0094 100%) !important;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  overflow: hidden;
+  
+  /* CAMBIO CRÍTICO: Añadimos padding para dejar espacio a la barra de navegación */
+  padding: 80px 0 0; /* Espacio superior de 80px, que debería ser suficiente */
+  
+  overflow: auto;
 }
 
-/* 🍪 Título principal */
+/* Título principal (la frase "Inicia sesión en Rellenitas 🍪") */
 .login-page h2 {
   font-family: "Poppins", sans-serif;
   font-size: 2.8rem;
@@ -32,9 +27,10 @@ body.login-active,
   margin-bottom: 1rem;
   text-align: center;
   line-height: 1.2;
+  margin-top: 2rem; /* AJUSTE: Reducido para dar espacio visible entre el menú y esta frase. */
 }
 
-/* 🧁 Recuadro (card) central para el login */
+/* Recuadro (card) central para el login */
 .login-card {
   background-color: #fff7ef;
   border: 2px solid #ffb347;
@@ -47,7 +43,7 @@ body.login-active,
   box-sizing: border-box;
 }
 
-/* 📝 Formulario dentro del recuadro */
+/* Formulario dentro del recuadro */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -58,7 +54,7 @@ body.login-active,
   box-sizing: border-box;
 }
 
-/* ✏️ Inputs */
+/* Inputs */
 .login-form input {
   width: 100%;
   padding: 0.95rem 1rem;
@@ -82,14 +78,14 @@ body.login-active,
   box-shadow: 0 6px 16px rgba(255, 111, 97, 0.18);
 }
 
-/* 🔑 Sección de contraseña */
+/* Sección de contraseña */
 .password-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-/* 🔗 Enlace "Olvidaste tu contraseña" */
+/* Enlace "Olvidaste tu contraseña" */
 .forgot-password {
   font-size: 0.85rem;
   color: #ff6f61;
@@ -103,7 +99,7 @@ body.login-active,
   color: #ff3d00;
 }
 
-/* 🚨 Mensaje de error */
+/* Mensaje de error */
 .error {
   font-size: 0.9rem;
   color: red;
@@ -111,7 +107,7 @@ body.login-active,
   margin: 0;
 }
 
-/* 🍰 Botón de inicio de sesión */
+/* Botón de inicio de sesión */
 .login-form button {
   width: 100%;
   padding: 0.95rem 1rem;
@@ -131,7 +127,7 @@ body.login-active,
   box-shadow: 0 14px 30px rgba(255, 76, 59, 0.24);
 }
 
-/* 📩 Enlace de registro */
+/* Enlace de registro */
 .login-register-msg {
   font-size: 0.9rem;
   margin-top: 0.6rem;
@@ -147,10 +143,40 @@ body.login-active,
   text-decoration: underline;
 }
 
-/* ✅ Mensaje de éxito */
+/* Mensaje de éxito */
 .success-msg {
   margin-top: 0.8rem;
   color: #28a745;
   font-weight: 600;
   font-size: 0.95rem;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .login-page {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .login-card {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  .login-page h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .login-form input {
+    font-size: 0.95rem;
+  }
+
+  .login-form button {
+    font-size: 1rem;
+  }
+
+  .login-register-msg {
+    font-size: 0.85rem;
+  }
 }

@@ -19,6 +19,7 @@
   animation: fadeIn 0.6s ease-in-out;
 }
 
+/* TÍTULOS Y TEXTO BASE */
 .perfil-titulo {
   color: #5a3921;
   font-size: 2.2rem;
@@ -39,6 +40,7 @@
   color: #4a2b1b;
 }
 
+/* LISTA E HISTORIAL */
 .perfil-historial {
   list-style: none;
   padding: 0;
@@ -70,7 +72,7 @@
   margin-top: 1rem;
 }
 
-/* 🔹 Inputs editables en perfil */
+/* INPUTS */
 .perfil-info input,
 .perfil-datos input {
   border: 1px solid #ffd5b0;
@@ -89,7 +91,7 @@
   box-shadow: 0 0 5px rgba(255, 183, 77, 0.5);
 }
 
-/* 🔹 Botones de perfil */
+/* BOTONES */
 .perfil-botones {
   margin-top: 2rem;
   display: flex;
@@ -130,6 +132,7 @@
   opacity: 0.85;
 }
 
+/* ANIMACIÓN */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -139,4 +142,20 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 🔹 ARREGLO FINAL PARA VISIBILIDAD DE TEXTO 🔹 */
+
+/* 1. Forzamos el color oscuro para TODO el texto dentro de la tarjeta, 
+      incluyendo enlaces (<a>), anulando cualquier regla genérica de color blanco. */
+.perfil-card *,
+.perfil-card a {
+    color: #4a2b1b !important;
+}
+
+/* 2. Forzamos el color oscuro en el estado HOVER de los enlaces, 
+      para evitar que el resaltado azul lo ponga blanco. */
+.perfil-datos a:hover,
+.perfil-datos p a:hover {
+    color: #4a2b1b !important;
 }

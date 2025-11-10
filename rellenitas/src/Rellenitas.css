@@ -1,8 +1,23 @@
 .galletitas-container {
   text-align: center;
+  /* AJUSTE CRÍTICO: Añadimos padding superior para compensar el header fijo */
+  padding-top: 80px; 
+  min-height: 100vh; /* Aseguramos que ocupe al menos la altura de la ventana */
 }
 
-.titulo {
+/* Título principal: Aseguramos que el h2 sea visible y tenga margen */
+.galletitas-container h2 {
+    font-size: 3.2rem;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 5px rgb(255, 255, 255);
+    font-weight: bold;
+    /* Ajuste de color y fuente si es necesario, basado en el estilo general */
+    color: #333; /* Color oscuro para asegurar que se vea */
+    margin-top: 0; /* Anulamos el margen superior si lo hubiera */
+}
+
+/* Si tu clase .titulo no se usa, puedes eliminarla, o renombrarla si deseas usarla para el h2 */
+.titulo { 
   font-size: 3.2rem;
   margin-bottom: 50px;
   text-shadow: 2px 2px 5px rgb(255, 255, 255);
