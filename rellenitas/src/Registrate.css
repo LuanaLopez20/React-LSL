@@ -11,7 +11,7 @@
   padding-top: 120px; /* deja espacio para el header fijo */
 }
 
-/* 🔝 Header fijo */
+/* ✅ SE ELIMINÓ ESTE BLOQUE PORQUE ROMPÍA TODO EL HOME
 header {
   position: fixed;
   top: 0;
@@ -22,6 +22,7 @@ header {
   padding: 1rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
+*/
 
 /* 🧁 Card central */
 .register-card {
@@ -121,12 +122,4 @@ header {
   color: #28a745;
   font-weight: 600;
   font-size: 0.95rem;
-}
-
-/* 🔸 Fondo general del body */
-body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #fff0d9 0%, #ffe6c9 100%);
-  overflow-x: hidden;
 }

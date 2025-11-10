@@ -1,9 +1,12 @@
 /* 🌸 Contenedor general */
 
-/* Evita que el fondo se propague a toda la app */
+/* ❌ Eliminado: esto borraba el fondo global de la app */
+/*
 body {
   background: none !important;
 }
+*/
+
 /* 🌸 Contenedor general (solo afecta al login) */
 body.login-active,
 .login-page {
@@ -13,13 +16,12 @@ body.login-active,
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(135deg, #fff0d9 0%, #ffe6c9 100%) !important;
+  background: linear-gradient(135deg, #241f18 0%, #883d0094 100%) !important;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
-
 
 /* 🍪 Título principal */
 .login-page h2 {
@@ -33,7 +35,6 @@ body.login-active,
 }
 
 /* 🧁 Recuadro (card) central para el login */
-
 .login-card {
   background-color: #fff7ef;
   border: 2px solid #ffb347;

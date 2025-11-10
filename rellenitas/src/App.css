@@ -22,8 +22,11 @@ body {
   padding: 0;
   background-color: #6a4f33;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 100px; /* un poco más alto por el nuevo header */
 }
 
 .App {
@@ -36,37 +39,73 @@ body {
 
 /* 🌸 Navbar y Header */
 .navbar {
-  background-color: #f1e5d9; /* Fondo del header */
-  width: 100%;               /* Asegura que ocupe todo el ancho de la pantalla */
-  position: fixed;           /* Fija el navbar en la parte superior */
-  top: 0;                    /* Fija en la parte superior */
-  left: 0;                   /* Alinea el navbar desde el borde izquierdo */
-  z-index: 1000;             /* Asegura que el navbar esté por encima de otros elementos */
+  background-color: #f1e5d9;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
   display: flex;
-  flex-direction: column;    /* Título arriba, links abajo */
+  flex-direction: column;
   align-items: center;
-  padding: 1rem 0;           /* Padding en la parte superior e inferior */
+  justify-content: center;
+
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Título "Rellenitas" centrado */
-.navbar h1 {
-  font-size: 2.5em;
+/* ---------- */
+/* FILA SUPERIOR */
+/* ---------- */
+.navbar-top {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+/* CENTRAR TÍTULO */
+.navbar-top h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 2.8em;
   color: #5c4a3d;
-  margin-bottom: 0.5rem;
-  text-align: center; /* asegura que esté centrado */
-  align-self: flex-start; /* Para que quede alineado a la izquierda */
+  margin: 0;
+  font-family: "Rubik Gemstones", sans-serif;
 }
 
-/* Navbar Links centrados debajo del título */
+/* “Mi cuenta” arriba derecha */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  min-width: 200px;
+}
+
+/* ---------- */
+/* FILA INFERIOR */
+/* ---------- */
+.navbar-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .navbar-links {
   display: flex;
-  justify-content: center;  /* Centra los links horizontalmente */
+  justify-content: center;
   gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* Links */
 .navbar a {
   text-decoration: none;
   color: #6a4f33;
@@ -74,114 +113,11 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
 }
 
-/* Fila inferior: links + carrito/usuario centrados */
-.navbar-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;  /* Centra toda la fila */
-  gap: 2rem;                /* Espacio entre links y dropdown */
-  margin-top: 10px;          /* Separación del título */
-}
-
-/* Contenedor del carrito y dropdown de usuario */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: flex-end;  /* Asegura que "Mi cuenta" y el carrito estén alineados a la derecha */
-  margin-right: 2rem;         /* Evita que "Mi cuenta" esté pegado al borde derecho */
-}
-
-/* Estilo para "Mi cuenta" */
-.navbar-right .dropdown span {
-  color: #0074d9; /* Azul */
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-}
-
-/* Ajuste para que texto "Mi cuenta" y carrito estén alineados verticalmente */
-.navbar-right .dropdown span,
-.navbar-right svg, /* Asumiendo que el carrito es un ícono svg */
-.navbar-right img /* o si el carrito es imagen */ {
-  vertical-align: middle;
-  display: inline-block;
-  height: 24px; /* Ajusta según el tamaño del carrito */
-}
-
-/* Para evitar que el contenido quede debajo del header fijo */
-body {
-  padding-top: 80px;  /* Ajusta este valor según el tamaño del navbar */
-}
-
-/* El resto de tu código permanece igual */
-
-/* Títulos centrados */
-.navbar h1 {
-  font-size: 2.5em;
-  color: #5c4a3d;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.navbar-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  list-style: none;
-}
-
-/* Navbar links */
-.navbar a {
-  text-decoration: none;
-  color: #6a4f33;
-  padding: 0.5rem 1rem;
-}
-
-.hero {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-.hero img {
-  width: 74%;
-  opacity: 0.9;
-}
-
-.hero h2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 120px;
-  color: #fff;
-}
-
-.section {
-  padding: 50px;
-  background-color: #f1e5d9;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-/* Footer */
-.footer {
-  background-color: #6a4f33;
-  color: white;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.socials a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
+.navbar a:hover {
+  color: #a0755d;
 }
 
 /* Dropdown */
@@ -194,7 +130,7 @@ body {
 .dropdown-content {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   background-color: #f1e5d9;
   min-width: 160px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -211,7 +147,6 @@ body {
   visibility: visible;
 }
 
-/* Items del dropdown */
 .dropdown-content li {
   list-style: none;
 }
@@ -234,112 +169,21 @@ body {
   background-color: #ffe6c9;
 }
 
-/* Navbar general */
-.navbar {
-  background-color: #f1e5d9;
-  width: 100%;
-  display: flex;
-  flex-direction: column; /* título arriba, links abajo */
-  align-items: center;
+/* Footer */
+.footer {
+  background-color: #6a4f33;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-/* Fila inferior: links + carrito/usuario centrados */
-.navbar-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* centra toda la fila */
-  gap: 2rem; /* espacio entre links y dropdown */
-  margin-top: 10px; /* separación del título */
-}
-
-/* Contenedor del carrito y dropdown de usuario */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Asegurar que los links queden dentro del rectángulo */
-.dropdown-content li {
-  margin: 0;
-  padding: 0;
-}
-
-.dropdown-content li a,
-.dropdown-content li button {
-  display: block;
-  width: 100%; /* que ocupe todo el ancho del cuadro */
-  padding: 0.6rem 1rem; /* el mismo padding en todos lados */
-  box-sizing: border-box; /* evita que el padding desborde */
-  border: none;
-  outline: none;
-}
-
-.dropdown-content li a:hover,
-.dropdown-content li a:focus,
-.dropdown-content li button:hover,
-.dropdown-content li button:focus {
-  bacborder: none;
-  outline: none;
-  boxkground-color: #ffe6c9; /* ya lo tenías */
-  -shadow: none;
-}
-
-/* ---- SOLO PEGAR ESTO AL FINAL DE App.css ---- */
-
-.navbar-top {
-  display: flex;
-  justify-content: space-between; /* Logo a la izq, cuenta+carrito a la der */
-  align-items: center;
-  width: 100%;
-}
-
-/* Contenedor del título "Rellenitas" */
-.navbar h1 {
-  font-size: 2.5em; /* opcional: hacerlo un poco más grande */
-  color: #5c4a3d;
-  margin-bottom: 0.5rem; /* separación debajo del título */
-  align-self: flex-start; /* para que quede alineado a la izquierda */
-}
-
-.navbar-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  /* centra los links debajo del título */
-  gap: 0;                   /* elimina espacios innecesarios */
-  margin-top: 0;            /* si quieres más pegado al título */
-  width: 100%;
-}
-
-
-/* Estilo para "Mi cuenta" */
-.navbar-right .dropdown span {
-  color: #0074d9; /* azul */
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-}
-
-/* Ajuste para que texto "Mi cuenta" y carrito estén alineados verticalmente */
-.navbar-right .dropdown span,
-.navbar-right svg, /* asumiendo que el carrito es un ícono svg */
-.navbar-right img /* o si el carrito es imagen */ {
-  vertical-align: middle;
-  display: inline-block;
-  height: 24px; /* ajusta según tamaño del carrito */
-}
-
-.mi-cuenta {
-  position: fixed;
-  top: 20px; /* misma altura que el carrito */
-  right: 70px; /* separada del carrito, ajusta según necesites */
-  z-index: 1000; /* encima del contenido */
-  color: #333;
+.socials a {
+  color: white;
   text-decoration: none;
-  font-weight: bold;
+  margin: 0 10px;
 }
 
+/* Avatar */
 .avatar {
   width: 34px;
   height: 34px;
@@ -360,12 +204,165 @@ body {
   transform: scale(1.05);
 }
 
-.dropbtn {
+/* -------------------- */
+/* 🌸 HERO PRINCIPAL 💖 */
+/* -------------------- */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.hero h2 {
+  position: relative;
+  z-index: 2;
+  font-family: "Rubik Gemstones", sans-serif;
+  font-size: 6rem;
+  color: #fff;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+}
+
+/* -------------------- */
+/* 🌸 SECCIONES */
+/* -------------------- */
+
+.section {
+  background-color: #f1e5d9;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+/* Imagen IZQUIERDA - Texto DERECHA */
+.text-img {
   display: flex;
   align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #333;
-  font-weight: 600;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.text-img img {
+  order: 1;
+  width: 350px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.text {
+  order: 2;
+  flex: 1;
+  max-width: 600px;
+  color: #6a4f33;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.text h3 {
+  font-size: 2rem;
+  color: #a0755d;
+  margin-bottom: 1rem;
+}
+
+.text p {
+  line-height: 1.6;
+}
+
+/* 🌸 Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-top {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navbar-top h1 {
+    font-size: 2rem;
+  }
+
+  .navbar-bottom {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar-right {
+    justify-content: center;
+    margin: 0;
+    position: static;
+  }
+
+  .hero h2 {
+    font-size: 3rem;
+  }
+
+  .text-img {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .text-img img {
+    width: 90%;
+  }
+}
+
+/* --- Ajustes pedidos para "Mi cuenta" --- */
+
+/* Cambiar color del texto "Mi cuenta" */
+.navbar-right .dropdown > span,
+.navbar-right .dropdown > a {
+  color: #007bff; /* azul */
+  font-weight: bold;
+}
+
+/* Evitar que el menú se sobresalga del recuadro */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #f1e5d9;
+  min-width: 160px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden; /* 🔹 evita que se sobresalga */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+/* Mantiene el color azul al pasar el mouse */
+.navbar-right .dropdown:hover > span,
+.navbar-right .dropdown:hover > a {
+  color: #0056b3; /* azul más oscuro */
 }

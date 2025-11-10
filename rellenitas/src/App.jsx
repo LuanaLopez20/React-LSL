@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Rellenitas from "./Rellenitas";
@@ -17,6 +17,20 @@ import { useAuth } from "./AuthContext";
 function App() {
   const [cart, setCart] = useState([]);
   const { user, logout } = useAuth();
+  const location = useLocation();
+
+  // 🌈 Este bloque controla el fondo de cada página
+  useEffect(() => {
+    document.body.className = ""; // limpia cualquier clase anterior
+
+    if (location.pathname === "/login") {
+      document.body.classList.add("login-active");
+    } else if (location.pathname === "/registrate") {
+      document.body.classList.add("registrate-active");
+    } else if (location.pathname === "/perfil") {
+      document.body.classList.add("perfil-active");
+    }
+  }, [location.pathname]);
 
   return (
     <div className="App">
@@ -46,7 +60,9 @@ function App() {
                 <div className="dropdown user-menu">
                   <div className="dropbtn">
                     {/* 👇 Círculo con la inicial del usuario */}
-                    <div className="avatar">{user.email[0].toUpperCase()}</div>
+                    <div className="avatar">
+                      {user.email[0].toUpperCase()}
+                    </div>
                     <span style={{ marginLeft: "5px" }}>▾</span>
                   </div>
 

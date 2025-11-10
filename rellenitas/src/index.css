@@ -66,3 +66,30 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* ✅ FOTOS Y TEXTO AL COSTADO – SIN ROMPER EL HOME */
+.text-img {
+  display: flex;
+  flex-direction: row;   /* foto y texto AL COSTADO */
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;             /* espacio entre imagen y texto */
+  width: 100%;
+  margin: 40px 0;
+}
+
+.text-img img {
+  width: 350px;          /* tamaño estable */
+  height: auto;
+  border-radius: 10px;
+}
+
+.text {
+  flex: 1;               /* texto ocupa lo que falta */
+  min-width: 300px;
+}
+
+/* ✅ Para la sección invertida (foto derecha – texto izquierda) */
+.text-img.reverse {
+  flex-direction: row-reverse;
+}
