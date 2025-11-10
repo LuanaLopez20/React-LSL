@@ -16,6 +16,10 @@ function Checkout() {
 
   const navigate = useNavigate(); // Usamos react-router-dom para navegar
 
+  const isCardNumberValid = (num) => num.replace(/\s/g, "").length === 12;
+  const isCvvValid = (cvv) => /^\d{3}$/.test(cvv);
+  const isCardHolderValid = (name) => name.trim().length > 0;
+
   // Datos de transferencia bancaria
   const cvu = "00000000000000000000000000"; // Reemplaza por tu CVU real
   const alias = "miAliasBancario"; // Reemplaza por tu Alias real
