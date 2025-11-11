@@ -1,4 +1,4 @@
-/* Login.css - versión sin fondo de página */
+/* Login.css - centrado y proporcionado correctamente */
 
 /* Contenedor general */
 .login-page {
@@ -9,7 +9,7 @@
   padding: 2rem 1rem 4rem;
   min-height: 100vh;
   box-sizing: border-box;
-  font-family: "Rubik Gemstones", cursive;
+  font-family: sans-serif
 }
 
 /* Título */
@@ -21,6 +21,7 @@
   text-align: center;
   line-height: 1.1;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  
 }
 
 /* Formulario */
@@ -30,7 +31,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.95); /* ligero fondo semi-transparente */
+  background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
@@ -51,11 +52,57 @@
   font-size: 1rem;
   outline: none;
   transition: all 0.25s ease;
+  display: block;
+  box-sizing: border-box;
 }
 
 .login-form input:focus {
   border-color: #5c4a3d;
   box-shadow: 0 6px 16px rgba(90, 60, 40, 0.2);
+}
+
+/* Wrapper de contraseña */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input de contraseña igual que los demás */
+.password-wrapper input {
+  width: 100%;
+  padding-right: 2.5rem; /* espacio para el icono */
+}
+
+/* Ícono del ojo */
+.toggle-password {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #5c4a3d;
+  transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: #3e2f23;
+}
+
+/* "Olvidaste tu contraseña" debajo */
+.forgot-password {
+  font-size: 0.85rem;
+  color: #5c4a3d;
+  text-decoration: none;
+  margin-top: 4px;
+  align-self: flex-end;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #3e2f23;
+  text-decoration: underline;
 }
 
 /* Botón */
@@ -82,31 +129,9 @@
 /* Mensaje de error */
 .login-form p {
   font-size: 0.95rem;
-  color: #e63946; /* rojo suave */
+  color: #e63946;
   text-align: center;
   margin: 0;
-}
-
-/* Wrapper de contraseña */
-.password-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-/* "Olvidé mi contraseña" */
-.forgot-password {
-  font-size: 0.85rem;
-  color: #5c4a3d;
-  text-decoration: none;
-  align-self: flex-end;
-  margin-top: 4px;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
-}
-
-.forgot-password:hover {
-  color: #3e2f23;
-  text-decoration: underline;
 }
 
 /* Mensaje de éxito */

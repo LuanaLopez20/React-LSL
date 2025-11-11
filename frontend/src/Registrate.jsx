@@ -99,7 +99,7 @@ export default function Registrate() {
         {/* Mensaje de login */}
         <p className="rln-login-msg">
           ¿Ya estás registrado? Inicia sesión con tu{" "}
-          <Link to="/login">Gmail o usuario y contraseña</Link>.
+          <Link to="/AdminLogin">Gmail o usuario y contraseña</Link>.
         </p>
       </form>
     </div>

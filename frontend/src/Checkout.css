@@ -1,81 +1,104 @@
+/* --- CONTENEDOR PRINCIPAL DEL CHECKOUT --- */
 .checkout-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  color: #6a4f33;
+ max-width: 800px;
+ margin: 20px auto;
+ padding: 25px; /* Aumentado el padding */
+ background-color: #f1e5d9; /* Color crema claro/fondo */
+ border-radius: 12px; /* Bordes más suaves */
+ color: #5c4a3d; /* Marrón oscuro para el texto general */
+ box-shadow: 0 5px 15px rgba(90, 60, 40, 0.15); /* Sombra sutil */
 }
 
+/* --- PASOS (STEPS) --- */
 .steps {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 30px; /* Más espacio */
 }
 
 .step {
-  padding: 10px 20px;
-  background-color: #ddd;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  color: #6a4f33;
+ padding: 10px 20px;
+ background-color: #f8ede3; /* Un tono un poco más claro para el inactivo */
+ border-radius: 20px;
+ cursor: pointer;
+ transition: background-color 0.3s, color 0.3s;
+ color: #6a4f33; /* Color marrón para el inactivo */
+ font-weight: 600;
 }
 
 .step.active {
-  background-color: #6a4f33;
-  color: white;
+ background: linear-gradient(180deg, #5c4a3d, #6a4f33); /* Degradado marrón para el activo */
+ color: white;
+ box-shadow: 0 4px 8px rgba(90, 60, 40, 0.3);
 }
 
 .step-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
 }
 
+/* --- CAMPOS DE ENTRADA (INPUTS) --- */
 input {
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+ padding: 12px;
+ font-size: 16px;
+ margin-bottom: 10px;
+ border: 1px solid #c9b79b; /* Borde marrón claro */
+ border-radius: 8px;
+ color: #5c4a3d;
+ background-color: #ffffff;
 }
 
+/* --- BOTONES GENERALES (UNIFICADOS AL ESTILO DEGRADADO) --- */
 button {
-  padding: 10px;
-  background-color: #6a4f33;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  color: rgb(0, 0, 0);
-  margin-right: 10px;
+ padding: 12px 24px;
+ /* Aplicamos el degradado del checkout-btn */
+ background: linear-gradient(180deg, #5c4a3d, #6a4f33);
+ color: white;
+ border: none;
+ border-radius: 16px;
+ cursor: pointer;
+ font-size: 16px;
+ font-weight: 700;
+ margin-right: 10px;
+ box-shadow: 0 6px 12px rgba(90, 60, 40, 0.2);
+ transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 button:hover {
-  background-color: #6a4f33;
+ /* Efecto hover de desplazamiento */
+ transform: translateY(-3px) scale(1.01);
+ box-shadow: 0 10px 18px rgba(90, 60, 40, 0.25);
+ background: linear-gradient(180deg, #6a4f33, #5c4a3d);
 }
 
 button:disabled {
-  background-color: #ddd;
-  cursor: not-allowed;
+ background-color: #c9b79b; /* Tono de gris/marrón claro inactivo */
+ color: #5c4a3d;
+ cursor: not-allowed;
+ transform: none;
+ box-shadow: none;
 }
 
+/* --- MENSAJES DE ESTADO --- */
 .mensaje-exitoso {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  margin-top: 20px;
+ /* Basado en tu paleta, pero manteniendo el concepto de éxito (verde/claro) */
+ background-color: #e6f7e3; /* Verde muy claro */
+ color: #3c763d; /* Verde oscuro */
+ padding: 20px;
+ border-radius: 8px;
+ border: 1px solid #d4edda;
+ text-align: center;
+ margin-top: 20px;
 }
 
 .form-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 20px;
-  text-align: center;
+ /* Basado en tu paleta, pero manteniendo el concepto de error (rojo/claro) */
+ background-color: #f7e6e6; /* Rojo muy claro */
+ color: #a94442; /* Rojo oscuro */
+ padding: 10px;
+ border-radius: 8px;
+ border: 1px solid #f5c6cb;
+ margin-top: 20px;
+ text-align: center;
 }

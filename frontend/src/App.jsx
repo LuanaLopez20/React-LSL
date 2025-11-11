@@ -63,15 +63,15 @@ function App() {
           </div>
         </div>
 
-        <div className="navbar-bottom">
+      <div className="navbar-bottom">
           <ul className="navbar-links">
             <li><Link to="/">Inicio</Link></li>
             <li><Link to="/rellenitas">Nuestras Cookies</Link></li>
             <li><Link to="/pedido">Haz tu Pedido</Link></li>
             {role === 'admin' && <li><Link to="/admin">Panel de Administración</Link></li>}
           </ul>
-        </div>
-      </nav>
+      </div>
+    </nav>
 
       {/* Rutas */}
       <Routes>
@@ -91,20 +91,6 @@ function App() {
         <Route path="/admin" element={role === 'admin' ? <AdminPanel /> : <Navigate to="/admin-login" />} />
       </Routes>
 
-      {/* Footer */}
-      <footer className="footer">
-        <ul>
-          <li><Link to="/contacto">Ubicación</Link></li>
-          {!user && (
-            <li className="dropdown-footer">
-              Mi cuenta
-              <ul className="dropdown-content-footer">
-                <li><Link to="/registrate">Crea tu cuenta</Link></li>
-              </ul>
-            </li>
-          )}
-        </ul>
-      </footer>
     </div>
   );
 }

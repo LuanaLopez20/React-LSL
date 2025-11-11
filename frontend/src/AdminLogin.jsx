@@ -47,7 +47,7 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <h2>Inicia sesión en Rellenitas 🍪</h2>
+      <h2>Inicia sesión en Rellenitas</h2>
 
       <form
         onSubmit={handleSubmit}

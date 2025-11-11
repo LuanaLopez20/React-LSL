@@ -19,7 +19,7 @@
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: #000000;
+  color: #ffffff;
 }
 
 .cart-row {
@@ -73,20 +73,23 @@
 }
 
 .cart-buttons button {
-  padding: 10px 12px;
-  font-size: 1.2rem;
-  background-color: #000000;
+  /* Iconos de cantidad (+/-) */
+  padding: 8px 10px; /* Ajuste para ser más pequeño */
+  font-size: 1rem;
+  background: linear-gradient(180deg, #5c4a3d, #6a4f33); /* Degradado marrón */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%; /* Botones redondos para + y - */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(90, 60, 40, 0.2);
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .cart-buttons button:hover {
-  background-color: #000000;
-  transform: scale(1.25);
+  background: linear-gradient(180deg, #6a4f33, #5c4a3d); /* Degradado hover */
+  transform: scale(1.1); /* Hacemos que sea un poco más sutil que 1.25 */
 }
+
 
 .total {
   font-size: 1.8rem;
@@ -99,17 +102,21 @@
 .checkout-btn {
   padding: 12px 24px;
   font-size: 1.2rem;
-  background-color: #000000;
+  font-weight: 700;
+  background: linear-gradient(180deg, #5c4a3d, #6a4f33);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 10px 22px rgba(90, 60, 40, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
   margin-top: 30px;
 }
 
 .checkout-btn:hover {
-  background-color: #00000075;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(90, 60, 40, 0.25);
+  background: linear-gradient(180deg, #6a4f33, #5c4a3d);
 }
 
 .codigo-postal {

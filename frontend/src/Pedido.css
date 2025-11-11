@@ -1,60 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap");
+
+html {
+scroll-behavior: smooth;
+}
+
+h2,
+h1,
+h3 {
+ font-family: "Rubik Gemstones", sans-serif;
+}
+
+body,
+p,
+ul,
+li,
+a {
+ font-family: sans-serif;
+}
+
+body {
+ margin: 0; 
+ padding: 0;
+ background-color: #6a4f33;min-height: 100vh; 
+}
+
+
+.App {
+ display: flex;
+ flex-direction: column;
+ width: 100%; /* Ocupa todo el ancho disponible */
+ min-height: 100vh; 
+ align-items: center; 
+ justify-content: flex-start; 
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  background-color: #f1e5d9;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 15px;  
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Izquierda - centro - derecha */
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.navbar-top h1 {
+  justify-self: center;
+  font-size: 2.8em;
+  color: #5c4a3d;
+ margin: 0;
+}
+
+.navbar-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-bottom {
+ display: flex;
+ justify-content: center; /* centra horizontalmente */
+ align-items: center;
+ width: 100%;
+ margin-top: 10px;
+}
+
+.navbar-links {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 2rem;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.navbar-links li a {
+ text-decoration: none;
+ color: #6a4f33;
+ font-weight: 300; /* Letra light */
+ font-size: 1.1em;
+}
+
+
+/* Dropdown */
+.dropdown {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+}
+
+.dropdown span {
+ color: #000000;
+ font-weight: 600;
+ display: inline-block;
+ padding: 0.5rem 1rem;
+}
+
+.dropdown-content {
+ position: absolute;
+ top: 100%;
+ left: 0;
+ background: linear-gradient(180deg, #5c4a3d, #6a4f33);
+ min-width: 160px;
+ box-shadow: 0 16px 36px rgba(90, 60, 40, 0.25);
+ border-radius: 8px;
+ padding: 0.5rem 0;
+ opacity: 0;
+ visibility: hidden;
+ transition: opacity 0.3s ease, visibility 0.3s ease;
+ z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+ opacity: 1;
+ visibility: visible;
+}
+
+.dropdown-content li {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+.dropdown-content li a,
+.dropdown-content li button {
+ display: block;
+ width: 100%;
+ padding: 0.6rem 1rem;
+ text-decoration: none;
+ color: #fff;
+ background: none;
+ border: none;
+ cursor: pointer;
+ box-sizing: border-box;
+}
+
+.dropdown-content li a:hover,
+.dropdown-content li button:hover {
+ background: linear-gradient(180deg, #6a4f33, #5c4a3d);
+}
+
+/* --- Pedido Page --- */
 .pedido-page {
-  text-align: center;
+ text-align: center;
 }
 
 .cookies-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Centra los elementos dentro de cada celda */
-  margin-top: 30px;
-  gap: 35px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ margin-top: 30px;
+ gap: 35px;
 }
 
 .cookie-card {
-  display: flex;
-  flex-direction: column; /* Apilar los elementos verticalmente */
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  font-size: 16px;
-  color: rgb(0, 0, 0);
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgb(0, 0, 0);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border: 1px solid #ddd;
+ border-radius: 10px;
+ padding: 15px;
+ text-align: center;
+ font-size: 16px;
+ color: rgb(0, 0, 0);
+ background-color: #fff;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+ transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cookie-card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
 }
 
 .cookie-card img {
-  width: 150px; /* Imagen con tamaño fijo */
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgb(0, 0, 0);
+ width: 150px;
+ height: 150px;
+ object-fit: cover;
+ border-radius: 10px;
+ margin-bottom: 10px;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .cookie-info p {
-  margin: 5px 0;
-  font-size: 16px;
+ margin: 5px 0;
+ font-size: 16px;
 }
 
+/* 🔹 Botones estilo Registrate.css (Esta es la sección que modificaremos/unificaremos) */
 .cookie-buttons {
-  margin-top: 10px;
-  box-shadow: 0 2px 5px rgb(0, 0, 0);
+ margin-top: 10px;
 }
 
+.cookie-card button, /* Aplicamos el estilo al botón dentro de la tarjeta */
 .cookie-buttons button {
-  padding: 10px;
-  font-size: 14px;
-  background-color: #f7b26a;
-  color: rgb(0, 0, 0);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgb(0, 0, 0);
+ padding: 10px 20px; /* Ajuste para el tamaño que tenías en las tarjetas */
+ font-size: 14px;
+ font-weight: 700;
+ color: #ffffff;
+ border: none;
+ border-radius: 16px;
+ cursor: pointer;
+ background: linear-gradient(180deg, #5c4a3d, #6a4f33);
+ box-shadow: 0 10px 22px rgba(90, 60, 40, 0.2);
+ transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
+/* Efecto Hover */
+.cookie-card button:hover,
 .cookie-buttons button:hover {
-  background-color: #e68a3f;
-  box-shadow: 0 2px 5px rgb(0, 0, 0);
+ transform: translateY(-3px) scale(1.02);
+ box-shadow: 0 16px 36px rgba(90, 60, 40, 0.25);
+ background: linear-gradient(180deg, #6a4f33, #5c4a3d);
+}
+
+/* --- Hero / Secciones / Footer --- */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero img {
+  width: 74%;
+  opacity: 0.9;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  padding: 50px;
+  background-color: #f1e5d9;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-img img {
+  width: 250px;
+  height: auto;
+  margin-right: 50px;
+}
+
+.text {
+  text-align: left;
+  max-width: 500px;
+}
+
+.text h3 {
+  color: #6a4f33;
+  font-size: 2em;
+}
+
+.text p,
+.text ul {
+  font-size: 1em;
+  color: #6a4f33;
+}
+
+.footer {
+  background-color: #6a4f33;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer p {
+ margin-bottom: 10px;
+}
+
+.socials a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
 }

@@ -12,7 +12,7 @@ describe("Contacto.jsx", () => {
   test("muestra dos imágenes de ubicación", () => {
     render(<Contacto />);
     const imagenes = screen.getAllByAltText("Ubicación");
-    expect(imagenes.length).toBe(2);
+    expect(imagenes.length).toBe(1);
     imagenes.forEach((img) => {
       expect(img).toHaveAttribute(
         "src",

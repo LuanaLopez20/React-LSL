@@ -5,6 +5,7 @@ html {
 }
 
 h2,
+h1,
 h3 {
   font-family: "Rubik Gemstones", sans-serif;
 }
@@ -34,42 +35,128 @@ body {
   justify-content: center;
 }
 
-/* Título "Rellenitas" centrado */
-.navbar h1 {
-  font-size: 2.5em;
-  color: #5c4a3d;
-  margin-bottom: 0.5rem;
-  text-align: center; /* asegura centrado */
+/* --- NAVBAR --- */
+.navbar {
+  background-color: #f1e5d9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px; /* Aumenta grosor del fondo */
+  padding-bottom: 15px; /* Aumenta grosor del fondo */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Links centrados debajo del título */
+/* Centrado perfecto del título sin mover "Mi cuenta" */
+.navbar-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Izquierda - centro - derecha */
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.navbar-top h1 {
+  justify-self: center;
+  font-size: 2.8em;
+  color: #5c4a3d;
+  margin: 0;
+}
+
+/* Mantiene "Mi cuenta" y carrito en su lugar */
+.navbar-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Barra inferior con links */
+.navbar-bottom {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
 .navbar-links {
   display: flex;
-  justify-content: center; /* centra los links horizontalmente */
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
   list-style: none;
-}
-
-.navbar ul {
-  list-style: none;
   padding: 0;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
 }
 
-.navbar ul li {
-  display: inline;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar a {
+/* Estilo de los links del menú */
+.navbar-links li a {
   text-decoration: none;
   color: #6a4f33;
-  align-items: center;
-  justify-content: center;
+  font-weight: 300; /* Letra light */
+  font-size: 1.1em;
 }
 
+/* Dropdown (Mi cuenta) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown span {
+  color: #6a4f33;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f1e5d9;
+  min-width: 160px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-content li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-content li a,
+.dropdown-content li button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #6a4f33;
+  background: none;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.dropdown-content li a:hover,
+.dropdown-content li button:hover {
+  background-color: #ffe6c9;
+}
+
+/* --- HERO --- */
 .hero {
   position: relative;
   text-align: center;
@@ -84,18 +171,19 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 .hero h2 {
   position: absolute;
-  top: 50%;
+  top: 30%; /* sube el texto un poco */
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 120px;
   color: #fff;
-  align-items: center;
-  justify-content: center;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
 }
 
+
+/* --- SECCIONES --- */
 .section {
   padding: 50px;
   background-color: #f1e5d9;
@@ -115,220 +203,42 @@ body {
   width: 250px;
   height: auto;
   margin-right: 50px;
-  align-items: center;
-  justify-content: center;
 }
 
 .text {
   text-align: left;
   max-width: 500px;
-  align-items: center;
-  justify-content: center;
 }
 
 .text h3 {
   color: #6a4f33;
   font-size: 2em;
-  align-items: center;
-  justify-content: center;
 }
 
 .text p {
-  font-size: 0, 2;
+  font-size: 1em;
   color: #6a4f33;
-  align-items: center;
-  justify-content: center;
 }
 
 .text ul {
-  font-size: 0.2;
+  font-size: 1em;
   color: #6a4f33;
-  align-items: center;
-  justify-content: center;
 }
 
+/* --- FOOTER --- */
 .footer {
   background-color: #6a4f33;
   color: white;
   padding: 20px;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
 .footer p {
   margin-bottom: 10px;
-  align-items: center;
-  justify-content: center;
 }
 
 .socials a {
   color: white;
   text-decoration: none;
   margin: 0 10px;
-  align-items: center;
-  justify-content: center;
-}
-/* Contenedor del dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-/* Texto del dropdown */
-.dropdown span {
-  color: #6a4f33;
-  font-weight: 600;
-  display: inline-block;
-  padding: 0.5rem 1rem;
-}
-
-/* Contenido del dropdown */
-.dropdown-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #f1e5d9;
-  min-width: 160px; /* mantiene el tamaño original */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  padding: 0.5rem 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 1000;
-}
-
-/* Mostrar dropdown al hover */
-.dropdown:hover .dropdown-content {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Items del dropdown */
-.dropdown-content li {
-  list-style: none;
-}
-
-/* Enlaces y botones */
-.dropdown-content li a,
-.dropdown-content li button {
-  display: block;
-  width: 100%;
-  padding: 0.6rem 1rem;
-  text-decoration: none;
-  color: #6a4f33;
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Hover de los items */
-.dropdown-content li a:hover,
-.dropdown-content li button:hover {
-  background-color: #ffe6c9;
-}
-/* Navbar general */
-.navbar {
-  background-color: #f1e5d9;
-  width: 100%;
-  display: flex;
-  flex-direction: column; /* título arriba, links abajo */
-  align-items: center;
-}
-
-/* Fila inferior: links + carrito/usuario centrados */
-.navbar-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* centra toda la fila */
-  gap: 2rem; /* espacio entre links y dropdown */
-  margin-top: 10px; /* separación del título */
-}
-
-/* Contenedor del carrito y dropdown de usuario */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Asegurar que los links queden dentro del rectángulo */
-.dropdown-content li {
-  margin: 0;
-  padding: 0;
-}
-
-.dropdown-content li a,
-.dropdown-content li button {
-  display: block;
-  width: 100%; /* que ocupe todo el ancho del cuadro */
-  padding: 0.6rem 1rem; /* el mismo padding en todos lados */
-  box-sizing: border-box; /* evita que el padding desborde */
-  border: none;
-  outline: none;
-}
-
-.dropdown-content li a:hover,
-.dropdown-content li a:focus,
-.dropdown-content li button:hover,
-.dropdown-content li button:focus {
-  outline: none;
-  background-color: #ffe6c9; /* ya lo tenías */
-  -shadow: none;
-}
-
-/* ---- SOLO PEGAR ESTO AL FINAL DE App.css ---- */
-
-.navbar-top {
-  display: flex;
-  justify-content: space-between; /* Logo a la izq, cuenta+carrito a la der */
-  align-items: center;
-  width: 100%;
-}
-
-/* Contenedor del título "Rellenitas" */
-.navbar h1 {
-  font-size: 2.5em; /* opcional: hacerlo un poco más grande */
-  color: #5c4a3d;
-  margin-bottom: 0.5rem; /* separación debajo del título */
-  align-self: flex-start; /* para que quede alineado a la izquierda */
-}
-
-/* Contenedor que agrupa links y parte derecha (cuenta + carrito) */
-.navbar-bottom {
-  display: flex;
-  justify-content: space-between; /* links a la izquierda, cuenta+carrito a la derecha */
-  align-items: center;
-  width: 100%;
-  gap: 2rem;
-  margin-top: 0; /* quito margen extra */
-}
-
-/* Estilo para "Mi cuenta" */
-.navbar-right .dropdown span {
-  color: #0074d9; /* azul */
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-}
-
-/* Ajuste para que texto "Mi cuenta" y carrito estén alineados verticalmente */
-.navbar-right .dropdown span,
-.navbar-right svg, /* asumiendo que el carrito es un ícono svg */
-.navbar-right img /* o si el carrito es imagen */ {
-  vertical-align: middle;
-  display: inline-block;
-  height: 24px; /* ajusta según tamaño del carrito */
-}
-
-.mi-cuenta {
-  position: fixed;
-  top: 20px; /* misma altura que el carrito */
-  right: 70px; /* separada del carrito, ajusta según necesites */
-  z-index: 1000; /* encima del contenido */
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
 }
