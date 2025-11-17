@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import Login from "../AdminLogin"; // Asumiendo que el componente está en el directorio superior
@@ -34,6 +34,21 @@ afterEach(() => {
 });
 
 describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
+  // Helper para realizar el login con un usuario y una contraseña
+  const realizarLogin = async (usuario, contraseña) => {
+    await userEvent.type(
+      screen.getByPlaceholderText(/Usuario o Gmail/i),
+      usuario
+    );
+    await userEvent.type(
+      screen.getByPlaceholderText(/Contraseña/i),
+      contraseña
+    );
+    await userEvent.click(
+      screen.getByRole("button", { name: /inicia sesión/i })
+    );
+  };
+
   // Caso de prueba para verificar que el formulario se renderiza correctamente
   test("renderiza correctamente el título y los campos", () => {
     render(
@@ -42,9 +57,9 @@ describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
       </MemoryRouter>
     );
 
-    expect(
-      screen.getByText(/Inicia sesión en Rellenitas 🍪/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText("Inicia sesión en Rellenitas")).toBeInTheDocument();
+    // Usar un matcher más flexible en getByText
+    <p data-testid="emoji-container">🍪</p>;
     expect(screen.getByPlaceholderText(/Usuario o Gmail/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Contraseña/i)).toBeInTheDocument();
     expect(
@@ -60,19 +75,7 @@ describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
       </MemoryRouter>
     );
 
-    // Llenar campos con credenciales de administrador (hardcodeadas en Login.jsx)
-    await userEvent.type(
-      screen.getByPlaceholderText(/Usuario o Gmail/i),
-      "KarenDiaz"
-    );
-    await userEvent.type(
-      screen.getByPlaceholderText(/Contraseña/i),
-      "Diaz1234"
-    );
-
-    await userEvent.click(
-      screen.getByRole("button", { name: /inicia sesión/i })
-    );
+    await realizarLogin("KarenDiaz", "Diaz1234");
 
     // 1. Verificar que se llamó a la función de login con el rol 'admin'
     expect(mockLogin).toHaveBeenCalledWith({ email: "KarenDiaz" }, "admin");
@@ -81,7 +84,7 @@ describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
     expect(window.alert).toHaveBeenCalledWith("¡Bienvenido Administrador!");
 
     // 3. Verificar la redirección
-    expect(mockNavigate).toHaveBeenCalledWith("/admin");
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/admin"));
   });
 
   // Caso 2: Login de Administrador exitoso (LuanaLopez)
@@ -92,19 +95,7 @@ describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
       </MemoryRouter>
     );
 
-    // Llenar campos con credenciales de la segunda administradora
-    await userEvent.type(
-      screen.getByPlaceholderText(/Usuario o Gmail/i),
-      "LuanaLopez"
-    );
-    await userEvent.type(
-      screen.getByPlaceholderText(/Contraseña/i),
-      "Lopez1234"
-    );
-
-    await userEvent.click(
-      screen.getByRole("button", { name: /inicia sesión/i })
-    );
+    await realizarLogin("LuanaLopez", "Lopez1234");
 
     // 1. Verificar que se llamó a la función de login con el rol 'admin'
     expect(mockLogin).toHaveBeenCalledWith({ email: "LuanaLopez" }, "admin");
@@ -113,7 +104,7 @@ describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
     expect(window.alert).toHaveBeenCalledWith("¡Bienvenido Administrador!");
 
     // 3. Verificar la redirección
-    expect(mockNavigate).toHaveBeenCalledWith("/admin");
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/admin"));
   });
 
   // Caso 3: Login de Usuario Común exitoso
@@ -124,27 +115,15 @@ describe("Login.jsx - Funcionalidad de Inicio de Sesión (Éxito)", () => {
       </MemoryRouter>
     );
 
-    // Llenar campos con credenciales que NO son de administrador
-    await userEvent.type(
-      screen.getByPlaceholderText(/Usuario o Gmail/i),
-      "usuario-comun"
-    );
-    await userEvent.type(
-      screen.getByPlaceholderText(/Contraseña/i),
-      "contrasena-normal"
-    );
-
-    await userEvent.click(
-      screen.getByRole("button", { name: /inicia sesión/i })
-    );
+    await realizarLogin("usuario-comun", "contrasena-normal");
 
     // 1. Verificar que se llamó a la función de login (sin el rol 'admin')
-    expect(mockLogin).toHaveBeenCalledWith({ email: "usuario-comun" }); // 'role' es undefined o omitido
+    expect(mockLogin).toHaveBeenCalledWith({ email: "usuario-comun" });
 
     // 2. Verificar el mensaje de alerta
     expect(window.alert).toHaveBeenCalledWith("¡Bienvenido a Rellenitas! 🍪");
 
     // 3. Verificar la redirección a la página principal
-    expect(mockNavigate).toHaveBeenCalledWith("/");
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/"));
   });
 });

@@ -4,7 +4,7 @@ import Pedido from "../Pedido";
 
 describe("Pedido.jsx", () => {
   test("renderiza correctamente el título y todas las cookies", () => {
-    render(<Pedido cart={[]} setCart={jest.fn()} />);
+    render(<Pedido cart={[]} setCart={jest.fn()} isLoggedIn={true} />);
     expect(screen.getByText(/COOKIE DE CHOCOLATE/i)).toBeInTheDocument();
     expect(screen.getByText(/COOKIE OREO/i)).toBeInTheDocument();
     expect(screen.getByText(/COOKIE DE FRUTA/i)).toBeInTheDocument();
@@ -15,8 +15,11 @@ describe("Pedido.jsx", () => {
   test('llama a "setCart" al agregar una cookie', () => {
     const mockSetCart = jest.fn();
     const mockCart = [];
+    const isLoggedIn = true; // Usuario está logueado
 
-    render(<Pedido cart={mockCart} setCart={mockSetCart} />);
+    render(
+      <Pedido cart={mockCart} setCart={mockSetCart} isLoggedIn={isLoggedIn} />
+    );
 
     const boton = screen.getAllByText(/Agregar al carrito/i)[0];
 
@@ -28,8 +31,28 @@ describe("Pedido.jsx", () => {
     expect(llamada[0].name).toBe("COOKIE DE CHOCOLATE");
   });
 
+  test("muestra el mensaje de alerta si no está logueado", () => {
+    const mockSetCart = jest.fn();
+    const mockCart = [];
+    const isLoggedIn = false; // Usuario no está logueado
+
+    jest.spyOn(window, "alert").mockImplementation(() => {});
+
+    render(
+      <Pedido cart={mockCart} setCart={mockSetCart} isLoggedIn={isLoggedIn} />
+    );
+
+    const boton = screen.getAllByText(/Agregar al carrito/i)[0];
+
+    fireEvent.click(boton);
+
+    expect(window.alert).toHaveBeenCalledWith(
+      "Necesitas iniciar sesión o crear una cuenta para agregar productos al carrito."
+    );
+  });
+
   test("muestra correctamente el precio de las cookies", () => {
-    render(<Pedido cart={[]} setCart={jest.fn()} />);
+    render(<Pedido cart={[]} setCart={jest.fn()} isLoggedIn={true} />);
 
     const precios = screen.getAllByText(/\$1500/i);
     expect(precios.length).toBe(5);

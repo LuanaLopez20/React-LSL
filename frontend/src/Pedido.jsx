@@ -2,7 +2,7 @@ import React from "react";
 import "./Pedido.css";
 
 // 1. Aceptamos la nueva prop: isLoggedIn
-function Pedido({ cart, setCart, isLoggedIn }) { 
+function Pedido({ cart, setCart, isLoggedIn }) {
   const cookies = [
     {
       id: 1,
@@ -21,28 +21,26 @@ function Pedido({ cart, setCart, isLoggedIn }) {
     },
   ];
 
-  const addToCart = (cookie) => {
-    // 2. Implementamos la verificación de sesión
+  const agregarAlCarrito = (cookie) => {
     if (isLoggedIn) {
       setCart([...cart, cookie]);
-      alert(`¡"${cookie.name}" agregado al carrito! 🛒`);
     } else {
-      // 3. Mostramos el mensaje de error si no ha iniciado sesión
-      alert("Necesitas iniciar sesión o crear una cuenta para agregar productos al carrito.");
+      alert(
+        "Necesitas iniciar sesión o crear una cuenta para agregar productos al carrito."
+      );
     }
   };
 
   return (
-    <div className="pedido-page">
-      <h3>HACE TU PEDIDO</h3>
-
-      <div className="cookies-grid">
+    <div className="pedido">
+      <h1>Elige tu Cookie</h1>
+      <div className="cookies-list">
         {cookies.map((cookie) => (
-          <div key={cookie.id} className="cookie-card">
+          <div key={cookie.id} className="cookie">
             <img src={cookie.img} alt={cookie.name} />
-            <p>{cookie.name}</p>
-            <p>${cookie.price}</p>
-            <button onClick={() => addToCart(cookie)}>
+            <h3>{cookie.name}</h3>
+            <p>Precio: ${cookie.price}</p>
+            <button onClick={() => agregarAlCarrito(cookie)}>
               Agregar al carrito
             </button>
           </div>
