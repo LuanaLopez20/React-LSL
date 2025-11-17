@@ -23,7 +23,10 @@ function App() {
   return (
     <div className="App">
       {/* Navbar */}
-      <nav className="navbar" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+      <nav
+        className="navbar"
+        style={{ paddingLeft: "20px", paddingRight: "20px" }}
+      >
         <div className="navbar-top">
           <div style={{ width: "200px" }}></div>
           <div style={{ width: "200px" }}>
@@ -32,7 +35,14 @@ function App() {
 
           <div className="navbar-right">
             {user ? (
-              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "200px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  width: "200px",
+                }}
+              >
                 <div></div>
                 <div className="dropdown user-menu">
                   <span>Mi cuenta ▾</span>
@@ -63,34 +73,57 @@ function App() {
           </div>
         </div>
 
-      <div className="navbar-bottom">
+        <div className="navbar-bottom">
           <ul className="navbar-links">
-            <li><Link to="/">Inicio</Link></li>
-            <li><Link to="/rellenitas">Nuestras Cookies</Link></li>
-            <li><Link to="/pedido">Haz tu Pedido</Link></li>
-            {role === 'admin' && <li><Link to="/admin">Panel de Administración</Link></li>}
+            <li>
+              <Link to="/">Inicio</Link>
+            </li>
+            <li>
+              <Link to="/rellenitas">Nuestras Cookies</Link>
+            </li>
+            <li>
+              <Link to="/pedido">Haz tu Pedido</Link>
+            </li>
+            {role === "admin" && (
+              <li>
+                <Link to="/admin">Panel de Administración</Link>
+              </li>
+            )}
           </ul>
-      </div>
-    </nav>
+        </div>
+      </nav>
 
       {/* Rutas */}
       <Routes>
         <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
         <Route path="/rellenitas" element={<Rellenitas />} />
-        <Route path="/pedido" element={<Pedido cart={cart} setCart={setCart} />} />
-        <Route path="/carrito" element={<Carrito cart={cart} setCart={setCart} />} />
+        <Route
+          path="/pedido"
+          element={<Pedido cart={cart} setCart={setCart} isLoggedIn={user} />}
+        />
+        <Route
+          path="/carrito"
+          element={<Carrito cart={cart} setCart={setCart} />}
+        />
         <Route path="/descripcion/:id" element={<DescripcionK />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/registrate" element={<Registrate />} />
         <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-        <Route path="/perfil" element={<h2>Mi Perfil (datos e historial)</h2>} />
-        <Route path="/checkout" element={<Checkout />} /> {/* Ruta para el proceso de pago */}
-
+        <Route
+          path="/perfil"
+          element={<h2>Mi Perfil (datos e historial)</h2>}
+        />
+        <Route path="/checkout" element={<Checkout />} />{" "}
+        {/* Ruta para el proceso de pago */}
         {/* Rutas de administración */}
         <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/admin" element={role === 'admin' ? <AdminPanel /> : <Navigate to="/admin-login" />} />
+        <Route
+          path="/admin"
+          element={
+            role === "admin" ? <AdminPanel /> : <Navigate to="/admin-login" />
+          }
+        />
       </Routes>
-
     </div>
   );
 }
